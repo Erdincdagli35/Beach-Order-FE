@@ -1,4 +1,11 @@
-<div class="menu-container">
-
-
+<nav class="navbar navbar-light bg-white shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Beach Order Manegment System</a>
+    <div>
+      <button *ngIf="auth.isLoggedIn()" class="btn btn-outline-danger" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>
+<div class="container py-4">
+  <router-outlet></router-outlet>
 </div>

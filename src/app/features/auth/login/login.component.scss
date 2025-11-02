@@ -1,0 +1,72 @@
+/* Sayfa arkaplanı */
+.login-page {
+  background: linear-gradient(135deg, #e8f3ff 0%, #ffffff 100%);
+}
+
+/* Kart stil */
+.login-card {
+  width: 900px;
+  max-width: 95%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Sol hero bölümü */
+.login-hero {
+  background-image: linear-gradient(135deg, #2b9cff, #3dd0ff 80%);
+  min-height: 260px;
+  text-align: center;
+  padding: 2.5rem;
+}
+
+/* Kart body */
+.card-body {
+  padding: 2rem 2rem;
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 8px;
+  height: 44px;
+  box-shadow: none;
+  transition: box-shadow 0.15s ease, transform 0.08s ease;
+}
+
+.form-control:focus {
+  box-shadow: 0 4px 18px rgba(43, 156, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+/* Input group icon */
+.input-group-text {
+  background: transparent;
+  border-right: 0;
+  min-width: 46px;
+  justify-content: center;
+  border-radius: 8px 0 0 8px;
+}
+
+/* Button */
+.btn-primary {
+  border-radius: 10px;
+  height: 48px;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(43, 156, 255, 0.16);
+  transition: transform 0.08s ease, box-shadow 0.12s ease;
+}
+
+.btn-primary:disabled {
+  opacity: 0.85;
+  cursor: not-allowed;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+/* Responsive - mobilde hero gizle */
+@media (max-width: 767px) {
+  .login-card { border-radius: 0.75rem; }
+  .login-hero { display: none; }
+  .card-body { padding: 1.5rem; }
+}
