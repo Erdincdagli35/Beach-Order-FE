@@ -1,0 +1,246 @@
+/* Genel arka plan ve font */
+.menu-container {
+  position: relative;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: linear-gradient(180deg, #e8f6fb 0%, #dff3fa 100%);
+  border-radius: 16px;
+  font-family: 'Merriweather', serif;
+  color: #244f63;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Logo bölgesi */
+.logo-wrapper {
+  text-align: center;
+  margin-bottom: 2rem;
+  background: radial-gradient(circle at center, #f2fbfd 0%, #dff3fa 70%, #cdeaf5 100%);
+  padding: 1.5rem;
+  border-radius: 20px;
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.08),      /* dış gölge */
+    inset 0 0 25px rgba(0, 0, 0, 0.03);  /* iç gölge */
+  animation: logoFadeIn 1s ease-in-out;
+}
+
+.logo-wrapper img {
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+  user-select: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes logoFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Başlık */
+.menu-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #1f4c5e;
+}
+
+/* Dil seçici */
+.language-switcher {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  font-family: 'Merriweather', serif;
+}
+
+.language-switcher button {
+  all: unset;
+  font-size: 1rem;
+  color: #1f4c5e;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.language-switcher button:hover {
+  color: #2f6d83;
+  text-decoration: underline;
+}
+
+.language-switcher button.active {
+  color: #154a60;
+  text-decoration: underline;
+}
+
+/* Kategori butonları */
+.category-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  border-bottom: 2px solid #c8e3ed;
+  margin-bottom: 1.5rem;
+}
+
+.category-nav button {
+  background-color: #ffffff;
+  border: 1px solid #b7dce8;
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #1f4c5e;
+  font-weight: 500;
+  transition: all 0.3s;
+  flex: 1 1 calc(33.33% - 1rem);
+  text-align: center;
+  min-width: 100px;
+  cursor: pointer;
+}
+
+.category-nav button:hover {
+  background-color: #e3f4fa;
+  color: #2f6d83;
+}
+
+.category-nav button.active {
+  background-color: #1f4c5e;
+  color: #ffffff;
+}
+
+/* Ürün tablosu */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tbody tr {
+  border-bottom: 1px solid #c8e3ed;
+  transition: background 0.2s;
+}
+
+tbody tr:hover {
+  background-color: #f2fbfd;
+}
+
+.item-name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
+}
+
+.item-description {
+  font-size: 0.9rem;
+  color: #5b8a9c;
+  padding-bottom: 0.2rem;
+  margin-top: 0.25rem;
+  display: block;
+  font-weight: 400;
+}
+
+.item-price {
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-align: right;
+  padding-bottom: 0.8rem;
+  color: #1f4c5e;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+/* Uyarılar */
+.alert {
+  text-align: center;
+  padding: 1rem;
+  background: #d9f0f8;
+  color: #22586c;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.alert-error {
+  background: #f8d7da;
+  color: #842029;
+}
+
+/* Boş kategori */
+.no-items {
+  text-align: center;
+  font-style: italic;
+  color: #7ea6b3;
+  margin-top: 1rem;
+}
+
+/* Geçiş efekti */
+* {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .menu-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .logo-wrapper {
+    margin-top: 2rem;
+  }
+
+  .menu-title {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .category-nav button {
+    flex: 1 1 45%;
+    font-size: 1rem;
+  }
+
+  .item-name {
+    font-size: 1rem;
+  }
+
+  .item-price {
+    font-size: 1rem;
+  }
+
+  .language-switcher {
+    top: 0.5rem;
+    right: 1rem;
+  }
+
+  .footer {
+    margin-top: 2rem;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #4b7b8b;
+    border-top: 1px solid #b7dce8;
+    font-family: 'Merriweather', serif;
+  }
+
+  .footer span {
+    display: inline-block;
+    opacity: 0.8;
+  }
+
+  .footer span:hover {
+    opacity: 1;
+  }
+}
