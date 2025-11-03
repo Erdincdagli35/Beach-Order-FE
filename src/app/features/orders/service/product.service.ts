@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../../models/product';
 import { environment } from '../../../../enviroments/environment';
+import { environment as envProd } from '../../../../enviroments/enviroment.prod';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ProductsService {
-  base = environment.orderUrl;
+  base = envProd.orderUrl;
   constructor(private http: HttpClient) {}
 
   list(): Observable<Product[]> {
