@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080' // backend local
+  authUrl: 'http://localhost:8080',
+  orderUrl: 'http://localhost:8081'
 };

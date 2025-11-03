@@ -13,13 +13,21 @@ import { AuthService } from './core/services/auth.service';
 import { TokenService } from './core/services/token.service';
 import { AuthGuard } from './core/guards/auth.guard';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { ProductsComponent } from './features/orders/product/product.component';
+import { CartComponent } from './features/orders/cart/cart/cart.component';
+import { MyOrdersComponent } from './features/orders/my-orders/my-orders/my-orders.component';
+import { AdminOrdersComponent } from './features/orders/admin-orders/admin-orders/admin-orders.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    OrdersComponent
+    OrdersComponent,
+    ProductsComponent,
+    CartComponent,
+    MyOrdersComponent,
+    AdminOrdersComponent
   ],
   imports: [
     BrowserModule,
