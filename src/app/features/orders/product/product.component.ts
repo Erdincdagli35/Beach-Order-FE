@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../../orders/product.service';
+import { ProductsService } from '../service/product.service';
+import { CartService } from '../service/cart.service';
 import { Product } from '../../models/product';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['./product.component.scss']
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
   loading = false;
-  constructor(private ps: ProductsService) {}
+  constructor(private ps: ProductsService, private cart: CartService) {}
 
   ngOnInit() {
     this.loading = true;
@@ -20,4 +21,7 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  addToCart(p: Product) {
+    this.cart.add(p, 1);
+  }
 }

@@ -1,1 +1,19 @@
-<p>my-orders works!</p>
+<div *ngIf="loading">Yükleniyor...</div>
+
+<div *ngFor="let o of orders" class="card mb-2">
+  <div class="card-body">
+    <div class="d-flex justify-content-between">
+      <div>
+        <strong>Order #{{ o.id }}</strong>
+        <div class="text-muted small">{{ o.createdAt | date:'short' }}</div>
+      </div>
+      <div>{{ o.status }}</div>
+    </div>
+
+    <ul class="mt-2">
+      <li *ngFor="let it of o.items">
+        {{ $any(it.product).name || $any(it.product).id }} — x{{ it.quantity }} — {{ it.unitPrice | currency:'TRY' }}
+      </li>
+    </ul>
+  </div>
+</div>

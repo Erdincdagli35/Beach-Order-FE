@@ -9,7 +9,7 @@ import { environment as envProd } from '../../../enviroments/enviroment.prod';
 @Injectable()
 export class AuthService {
   //private base = environment.apiUrl; // örn: http://localhost:8080
-  private base = envProd.apiUrl;
+  private base = envProd.authUrl;
 
   constructor(private http: HttpClient, private token: TokenService) {}
 
