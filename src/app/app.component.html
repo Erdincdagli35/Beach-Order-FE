@@ -1,11 +1,14 @@
 <nav class="navbar navbar-light bg-white shadow-sm">
   <div class="container">
-    <a class="navbar-brand" routerLink="/">Beach Order Manegment System</a>
+    <a class="navbar-brand" routerLink="/">BeachOrders</a>
     <div>
+      <button *ngIf="!auth.isLoggedIn()" class="btn btn-outline-primary" routerLink="/login">Login</button>
+      <button *ngIf="auth.isLoggedIn()" class="btn btn-outline-secondary me-2" routerLink="/cart">Sepet</button>
+
+      <!-- admin link -->
+      <button *ngIf="token.hasRole('ROLE_ADMIN')" class="btn btn-outline-warning me-2" routerLink="/admin/orders">Admin</button>
+
       <button *ngIf="auth.isLoggedIn()" class="btn btn-outline-danger" (click)="logout()">Logout</button>
     </div>
   </div>
 </nav>
-<div class="container py-4">
-  <router-outlet></router-outlet>
-</div>

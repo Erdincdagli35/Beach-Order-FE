@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from './core/services/auth.service';
+import { TokenService } from './core/services/token.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import { AuthService } from './core/services/auth.service';
 export class AppComponent {
   title = 'Beach Order App';
 
-  constructor(public auth: AuthService, private router: Router) {}
+constructor(public auth: AuthService, public token: TokenService, private router: Router) {}
   logout() {
     this.auth.logout();
     this.router.navigate(['/login']);

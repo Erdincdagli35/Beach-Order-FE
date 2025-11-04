@@ -10,8 +10,7 @@ export class TokenService {
   getAccessToken(): string | null { return localStorage.getItem(this.accessKey); }
   setRefreshToken(token: string) { localStorage.setItem(this.refreshKey, token); }
   getRefreshToken(): string | null { return localStorage.getItem(this.refreshKey); }
-  clear() { localStorage.removeItem(this.accessKey); localStorage.removeItem(this.refreshKey); }
-  isLoggedIn(): boolean { return !!this.getAccessToken(); }
+  
   setRoles(roles: string[]) { localStorage.setItem(this.rolesKey, JSON.stringify(roles || [])); }
   getRoles(): string[] { 
     const raw = localStorage.getItem(this.rolesKey);
@@ -19,4 +18,12 @@ export class TokenService {
   }
 
   hasRole(role: string): boolean { return this.getRoles().includes(role); }
+
+  clear() {
+    localStorage.removeItem(this.accessKey);
+    localStorage.removeItem(this.refreshKey);
+    localStorage.removeItem(this.rolesKey);
+  }
+
+  isLoggedIn(): boolean { return !!this.getAccessToken(); }
 }

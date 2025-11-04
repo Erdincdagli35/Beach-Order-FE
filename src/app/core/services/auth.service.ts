@@ -14,13 +14,14 @@ export class AuthService {
   constructor(private http: HttpClient, private token: TokenService) {}
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.base}/api/auth/login`, { username, password })
-      .pipe(tap(res => {
-        if (res?.accessToken) this.token.setAccessToken(res.accessToken);
-        if (res?.refreshToken) this.token.setRefreshToken(res.refreshToken);
-        if (res?.roles) this.token.setRoles(res.roles);
-      }));
-  }
+  return this.http.post<any>(`${this.base}/api/auth/login`, { username, password })
+    .pipe(tap(res => {
+      if (res?.accessToken) this.token.setAccessToken(res.accessToken);
+      if (res?.refreshToken) this.token.setRefreshToken(res.refreshToken);
+      if (res?.roles) this.token.setRoles(res.roles); // burada rolleri saklıyoruz
+    }));
+}
+
 
   logout() {
     const refresh = this.token.getRefreshToken();
