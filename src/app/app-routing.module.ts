@@ -12,10 +12,12 @@ import { AdminOrdersComponent } from '../app/features/orders/admin-orders/admin-
 
 
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'cart', component: CartComponent },
   { path: 'orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
   { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard] },
+  { path: 'product', component: ProductComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

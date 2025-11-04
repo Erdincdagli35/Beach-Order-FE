@@ -18,6 +18,7 @@ export class AuthService {
       .pipe(tap(res => {
         if (res?.accessToken) this.token.setAccessToken(res.accessToken);
         if (res?.refreshToken) this.token.setRefreshToken(res.refreshToken);
+        if (res?.roles) this.token.setRoles(res.roles);
       }));
   }
 
