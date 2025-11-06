@@ -24,10 +24,7 @@ import { MyOrdersComponent } from './features/orders/my-orders/my-orders/my-orde
   declarations: [
     AppComponent,
     LoginComponent,
-    OrdersComponent,
     ProductListComponent,
-    CartComponent,
-    MyOrdersComponent
   ],
   imports: [
     BrowserModule,
