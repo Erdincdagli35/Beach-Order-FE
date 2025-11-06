@@ -5,7 +5,7 @@ import { LoginComponent } from './features/auth/login/login.component';
 import { OrdersComponent } from './features/orders/orders.component';
 import { AuthGuard } from './core/guards/auth.guard';
 
-import { ProductComponent } from '../app/features/orders/product/product.component';
+import { ProductListComponent } from './features/orders/product/product-list.component';
 import { CartComponent } from '../app/features/orders/cart/cart/cart.component';
 import { MyOrdersComponent } from '../app/features/orders/my-orders/my-orders/my-orders.component';
 import { AdminOrdersComponent } from '../app/features/orders/admin-orders/admin-orders/admin-orders.component';
@@ -13,11 +13,8 @@ import { AdminOrdersComponent } from '../app/features/orders/admin-orders/admin-
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
-  { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard] },
-  { path: 'product-list', component: ProductComponent, canActivate: [AuthGuard] }
+  { path: 'product-list', component: ProductListComponent},
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
