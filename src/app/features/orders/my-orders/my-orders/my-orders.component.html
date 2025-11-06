@@ -9,11 +9,5 @@
       </div>
       <div>{{ o.status }}</div>
     </div>
-
-    <ul class="mt-2">
-      <li *ngFor="let it of o.items">
-        {{ $any(it.product).name || $any(it.product).id }} — x{{ it.quantity }} — {{ it.unitPrice | currency:'TRY' }}
-      </li>
-    </ul>
   </div>
 </div>
