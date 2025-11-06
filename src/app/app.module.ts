@@ -18,7 +18,6 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { ProductListComponent } from './features/orders/product/product-list.component';
 import { CartComponent } from './features/orders/cart/cart/cart.component';
 import { MyOrdersComponent } from './features/orders/my-orders/my-orders/my-orders.component';
-import { AdminOrdersComponent } from './features/orders/admin-orders/admin-orders/admin-orders.component';
 
 
 @NgModule({
@@ -28,8 +27,7 @@ import { AdminOrdersComponent } from './features/orders/admin-orders/admin-order
     OrdersComponent,
     ProductListComponent,
     CartComponent,
-    MyOrdersComponent,
-    AdminOrdersComponent
+    MyOrdersComponent
   ],
   imports: [
     BrowserModule,
