@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule,  HTTP_INTERCEPTORS} from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,8 +36,11 @@ import { AdminOrdersComponent } from './features/orders/admin-orders/admin-order
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    FormsModule
-  ],
+    FormsModule,
+    RouterModule.forRoot([
+      {path: 'product-list', component:ProductComponent}
+    ])
+    ],
   providers: [AuthService, TokenService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })

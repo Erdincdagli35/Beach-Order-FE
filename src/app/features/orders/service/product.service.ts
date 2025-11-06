@@ -8,10 +8,11 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class ProductsService {
   base = envProd.orderUrl;
+  //base = environment.orderUrl;
   constructor(private http: HttpClient) {}
 
   list(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.base}/api/products`);
+    return this.http.get<Product[]>(`${this.base}/api/products/list`);
   }
 
   get(id: number) {

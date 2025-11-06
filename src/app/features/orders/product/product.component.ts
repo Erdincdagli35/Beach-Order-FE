@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../service/product.service';
 import { CartService } from '../service/cart.service';
-import { Product } from '../../models/product';
+import { Product, Category } from '../../models/product';
 import { TokenService } from 'src/app/core/services/token.service';
-// import { FormsModule } from '@angular/forms'; // <-- Bunu kaldır
 
 @Component({
   selector: 'app-product',
@@ -11,43 +10,60 @@ import { TokenService } from 'src/app/core/services/token.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  products: Product[] = [];
+ products: Product[] = [];
   loading = false;
   showCreateForm = false;
-  // newProduct'ı daha kesin tip vererek kullanmak hata riskini azaltır:
-  newProduct: { name: string; price: number } = { name: '', price: 0 };
+  errorMessage = '';
+  // default category atamalısın (ör: Beer)
+  newProduct: { name: string; price: number; category: Category } = {
+    name: '',
+    price: 0,
+    category: Category.Beer
+  };
 
-  // FormsModule burada olmamalı:
-  constructor(private ps: ProductsService, private cart: CartService, public token: TokenService) {}
+  // kategori listesini template'e bağlamak için
+  categories = Object.values(Category) as Category[];
 
-  toggleCreate() { this.showCreateForm = !this.showCreateForm; }
+  // Gruplanmış: { Beer: [...], Gin: [...] }
+  groupedProducts: Record<string, Product[]> = {};
 
-  createProduct() {
-    if (!this.newProduct.name || this.newProduct.price == null) return;
-    this.ps.create(this.newProduct).subscribe({
-      next: p => {
-        this.products.unshift(p);
-        this.newProduct = { name: '', price: 0 };
-        this.showCreateForm = false;
-      },
-      error: e => alert('Ürün eklenirken hata: ' + (e?.error?.message || e.message))
-    });
+  constructor(
+    private ps: ProductsService,
+    private cart: CartService,
+    public token: TokenService
+  ) {}
+
+  ngOnInit(): void {
+    this.loadProducts();
   }
 
-  ngOnInit() {
+  loadProducts(): void {
     this.loading = true;
+    this.errorMessage = '';
     this.ps.list().subscribe({
-      next: p => { this.products = p; this.loading = false; },
-      error: () => { this.loading = false; }
+      next: (p) => {
+        this.products = p || [];
+        this.groupByCategory();
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Products list error', err);
+        this.errorMessage = err?.error?.message || err.message || 'Liste yüklenirken hata oluştu.';
+        this.loading = false;
+      }
     });
   }
 
-  addToCart(p: Product) {
-    this.cart.add(p, 1);
+  private groupByCategory(): void {
+    this.groupedProducts = {};
+    for (const c of this.categories) {
+      this.groupedProducts[c] = [];
+    }
+    for (const prod of this.products) {
+      const cat = prod.category ?? 'Uncategorized';
+      if (!this.groupedProducts[cat]) this.groupedProducts[cat] = [];
+      this.groupedProducts[cat].push(prod);
+    }
   }
 
-  onPriceChange(value: any): void {
-  const parsed = Number(value);
-  this.newProduct.price = isNaN(parsed) ? 0 : parsed;
-}
 }
