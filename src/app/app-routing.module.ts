@@ -5,11 +5,17 @@ import { LoginComponent } from './features/auth/login/login.component';
 import { OrdersComponent } from './features/orders/orders.component';
 import { AuthGuard } from './core/guards/auth.guard';
 
-import { ProductListComponent } from './features/orders/product/product-list.component';
+import { ProductListComponent } from './features/product-management-system/product-list/product-list.component';
+import { ProductEditComponent } from './features/product-management-system/product-edit/product-edit.component';
+import { ProductDeleteComponent } from './features/product-management-system/product-delete/product-delete.component';
+import { ProductCreateComponent } from './features/product-management-system/product-create/product-create.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'product-list', component: ProductListComponent},
+  { path: 'products/create', component: ProductCreateComponent },
+  { path: 'products/edit/:id', component: ProductEditComponent },
+  { path: 'products/delete/:id', component: ProductDeleteComponent },
   { path: 'login', component: LoginComponent }
 ];
 

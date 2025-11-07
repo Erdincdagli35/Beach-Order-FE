@@ -15,12 +15,24 @@ export class ProductsService {
     return this.http.get<Product[]>(`${this.base}/api/products/list`);
   }
 
+  listById(id : number): Observable<Product> {
+    return this.http.get<Product>(`${this.base}/api/products/list/${id}`);
+  }
+
   get(id: number) {
     return this.http.get<Product>(`${this.base}/api/products/${id}`);
   }
 
   // admin create (optional)
   create(product: Partial<Product>) {
-    return this.http.post<Product>(`${this.base}/api/products`, product);
+    return this.http.post<Product>(`${this.base}/api/products/create`, product);
+  }
+
+  update(id: number, product: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.base}/api/products/update/${id}`, product);
+  }
+
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.base}/api/products/delete/${id}`);
   }
 }

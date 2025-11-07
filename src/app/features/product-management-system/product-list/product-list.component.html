@@ -14,8 +14,7 @@
   <!-- Admin: Yeni Ürün Ekle -->
   <div class="d-flex justify-content-end mb-3">
     <button class="btn btn-primary"
-            [disabled]="loading || !token.hasRole('ROLE_ADMIN')"
-            (click)="showCreateForm = !showCreateForm">
+            (click)="onCreate()">
       {{ showCreateForm ? 'İptal' : 'Yeni Ürün Ekle' }}
     </button>
   </div>
@@ -52,8 +51,8 @@
         <div class="text-muted small mb-2">💰 {{ p.price | currency:'TRY ':'symbol':'1.2-2' }}</div>
 
         <div class="d-flex justify-content-end gap-2">
-          <button class="btn btn-outline-primary btn-sm">Düzenle</button>
-          <button class="btn btn-outline-danger btn-sm">Sil</button>
+          <button class="btn btn-outline-primary btn-sm"  (click)="onEdit(p.id)">Düzenle</button>
+          <button class="btn btn-outline-danger btn-sm"  (click)="onDelete(p.id)">Sil</button>
         </div>
       </div>
     </div>

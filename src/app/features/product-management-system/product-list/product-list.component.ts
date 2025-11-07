@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../service/product.service';
-import { CartService } from '../service/cart.service';
+import { ProductsService } from '../../orders/service/product.service';
+import { CartService } from '../../orders/service/cart.service';
 import { Product, Category } from '../../models/product';
 import { TokenService } from 'src/app/core/services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -32,6 +33,7 @@ export class ProductListComponent implements OnInit {
   constructor(
     private ps: ProductsService,
     private cart: CartService,
+    private router: Router,
     public token: TokenService
   ) {}
 
@@ -69,4 +71,22 @@ export class ProductListComponent implements OnInit {
     }
   }
 
+  onDelete(id?: number): void {
+    if (!id) return;
+    if (!confirm('Bu ürünü silmek istediğine emin misin?')) return;
+
+    this.ps.delete(id).subscribe({
+      next: () => { this.loadProducts(); },
+      error: err => { alert('Silme başarısız: ' + (err.message || err)); }
+    });
+  }
+
+  onEdit(id?: number): void {
+    if (!id) return;
+    this.router.navigate(['/products/edit', id]);
+  }
+
+  onCreate(): void {
+    this.router.navigate(['/products/create']);
+  }
 }

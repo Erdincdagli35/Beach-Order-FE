@@ -15,9 +15,12 @@ import { AuthService } from './core/services/auth.service';
 import { TokenService } from './core/services/token.service';
 import { AuthGuard } from './core/guards/auth.guard';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
-import { ProductListComponent } from './features/orders/product/product-list.component';
+import { ProductListComponent } from './features/product-management-system/product-list/product-list.component';
 import { CartComponent } from './features/orders/cart/cart/cart.component';
 import { MyOrdersComponent } from './features/orders/my-orders/my-orders/my-orders.component';
+import { ProductCreateComponent } from './features/product-management-system/product-create/product-create.component';
+import { ProductDeleteComponent } from './features/product-management-system/product-delete/product-delete.component';
+import { ProductEditComponent } from './features/product-management-system/product-edit/product-edit.component';
 
 
 @NgModule({
@@ -25,6 +28,9 @@ import { MyOrdersComponent } from './features/orders/my-orders/my-orders/my-orde
     AppComponent,
     LoginComponent,
     ProductListComponent,
+    ProductCreateComponent,
+    ProductDeleteComponent,
+    ProductEditComponent,
   ],
   imports: [
     BrowserModule,
