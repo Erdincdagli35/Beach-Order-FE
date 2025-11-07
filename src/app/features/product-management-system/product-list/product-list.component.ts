@@ -18,9 +18,10 @@ export class ProductListComponent implements OnInit {
   selectedCategory: string | null = null;
 
   // default category atamalısın (ör: Beer)
-  newProduct: { name: string; price: number; category: Category } = {
+  newProduct: { name: string; price: number; description: string, category: Category } = {
     name: '',
     price: 0,
+    description : '',
     category: Category.Beer
   };
 
