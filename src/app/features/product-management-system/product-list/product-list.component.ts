@@ -40,7 +40,7 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadProducts();
-      this.selectedCategory = this.categories?.length ? this.categories[0] : null;
+    this.selectedCategory = this.categories?.length ? this.categories[0] : null;
   }
 
   loadProducts(): void {
