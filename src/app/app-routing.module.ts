@@ -9,9 +9,11 @@ import { ProductListComponent } from './features/product-management-system/produ
 import { ProductEditComponent } from './features/product-management-system/product-edit/product-edit.component';
 import { ProductDeleteComponent } from './features/product-management-system/product-delete/product-delete.component';
 import { ProductCreateComponent } from './features/product-management-system/product-create/product-create.component';
+import { ProductMainMenuComponent } from './features/product-management-system/product-main-menu/product-main-menu.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'product-main-menu', component: ProductMainMenuComponent},
   { path: 'product-list', component: ProductListComponent},
   { path: 'products/create', component: ProductCreateComponent },
   { path: 'products/edit/:id', component: ProductEditComponent },

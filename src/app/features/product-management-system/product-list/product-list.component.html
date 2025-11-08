@@ -1,5 +1,6 @@
 <div class="container product-page">
 
+  <h3 class="mb-3 fw-bold text-primary">Ürün Listesi</h3>
   <!-- Kategori Tab Bar -->
   <div class="category-tabs mb-4" *ngIf="categories?.length">
     <button
@@ -53,6 +54,7 @@
       <div class="product-card shadow-sm p-3">
         <h6 class="mb-1">{{ p.name }}</h6>
         <div class="text-muted small mb-2">💰 {{ p.price | currency:'TRY ':'symbol':'1.2-2' }}</div>
+        <label class="mb-1">{{ p.description }}</label>
 
         <div class="d-flex justify-content-end gap-2">
           <button class="btn btn-outline-primary btn-sm"  (click)="onEdit(p.id)">Düzenle</button>

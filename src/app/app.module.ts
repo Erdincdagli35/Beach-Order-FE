@@ -21,6 +21,9 @@ import { MyOrdersComponent } from './features/orders/my-orders/my-orders/my-orde
 import { ProductCreateComponent } from './features/product-management-system/product-create/product-create.component';
 import { ProductDeleteComponent } from './features/product-management-system/product-delete/product-delete.component';
 import { ProductEditComponent } from './features/product-management-system/product-edit/product-edit.component';
+import { ProductMainMenuComponent } from './features/product-management-system/product-main-menu/product-main-menu.component';
+import { OrderListComponent } from './features/product-management-system/order-list/order-list.component';
+import { RoomListComponent } from './features/product-management-system/room-list/room-list.component';
 
 
 @NgModule({
@@ -31,6 +34,9 @@ import { ProductEditComponent } from './features/product-management-system/produ
     ProductCreateComponent,
     ProductDeleteComponent,
     ProductEditComponent,
+    ProductMainMenuComponent,
+    OrderListComponent,
+    RoomListComponent,
   ],
   imports: [
     BrowserModule,

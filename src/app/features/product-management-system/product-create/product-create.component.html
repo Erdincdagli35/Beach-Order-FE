@@ -12,6 +12,7 @@
 
     <div class="col-md-3">
       <div class="dropdown w-100">
+        <label class="form-label">Kategori</label>
         <button class="btn btn-outline-primary w-100 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           {{ category?.value || 'Kategori Seç' }}
         </button>
@@ -36,7 +37,7 @@
       <textarea formControlName="description" class="form-control"></textarea>
     </div>
 
-    <button class="btn btn-primary" type="submit" [disabled]="submitting">Oluştur</button>
+    <a class="btn btn-link" (click)="submit()">Oluştur</a>
     <a class="btn btn-link" (click)="cancel()">İptal</a>
   </form>
 </div>
