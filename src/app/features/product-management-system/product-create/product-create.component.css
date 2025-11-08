@@ -1,12 +1,6 @@
-/* styles.css — Otel (Yaz sezonu) teması: deniz-yeşil - mavi - koyu mavi (2025 style) */
-
-/* Google font önerisi (head içine ekle):
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-*/
 
 :root{
-  /* Deniz-yeşil / Gökyüzü-mavi / Koyu-mavi paleti */
-  --bg-1: #f3fbfb;               /* hafif deniz beyazı */
+    --bg-1: #f3fbfb;               /* hafif deniz beyazı */
   --bg-2: #e8f9f8;               /* ince aqua tint */
   --sea: #00a3a3;                /* canlı deniz-yeşili */
   --sea-700: #007a7a;            /* koyu deniz-yeşili */
@@ -24,7 +18,6 @@
   --container-width: 980px;
 }
 
-/* --- Base --- */
 *{box-sizing:border-box}
 html,body{
   height:100%;
@@ -39,7 +32,6 @@ html,body{
   padding:28px;
 }
 
-/* Geniş, merkezde kart benzeri container (otel landing hissi) */
 .container{
   max-width: var(--container-width);
   margin:28px auto;
@@ -54,7 +46,6 @@ html,body{
   overflow:hidden;
 }
 
-/* decorative wave/gradient (subtle) */
 .container::after{
   content:"";
   position:absolute;
@@ -69,7 +60,6 @@ html,body{
   pointer-events:none;
 }
 
-/* Başlık */
 .container h3{
   margin:0 0 14px 0;
   font-weight:800;
@@ -78,10 +68,8 @@ html,body{
   letter-spacing:-0.3px;
 }
 
-/* Form grid */
 form{ display:grid; gap:12px; }
 
-/* Inputs */
 .form-control, input[type="number"], textarea, .form-select{
   width:100%;
   padding:12px 14px;
@@ -95,24 +83,19 @@ form{ display:grid; gap:12px; }
   color: var(--navy);
 }
 
-/* Focus */
 .form-control:focus, .form-select:focus, textarea:focus{
   border-color: rgba(43,124,255,0.85);
   box-shadow: 0 10px 28px rgba(43,124,255,0.06), 0 0 0 5px rgba(43,124,255,0.08);
   transform: translateY(-1px);
 }
 
-/* Label */
 .form-label{ display:block; font-size:0.92rem; margin-bottom:6px; color:var(--muted); font-weight:700; }
 
-/* Helper text */
 .text-danger{ color: var(--danger); font-size:0.86rem; margin-top:6px; }
 
-/* Column helper */
 .col-md-3{ width:260px; } 
 @media (max-width:900px){ .col-md-3{ width:100%; } }
 
-/* Buttons genel */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -126,7 +109,6 @@ form{ display:grid; gap:12px; }
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
-/* Primary (rezervasyon / eylem) */
 .btn-primary{
   background: linear-gradient(90deg, var(--sea), var(--sky));
   color:white;
@@ -135,7 +117,6 @@ form{ display:grid; gap:12px; }
 .btn-primary:hover{ transform: translateY(-4px); box-shadow: 0 22px 48px rgba(11,80,160,0.14); }
 .btn-primary:active{ transform: translateY(-2px); }
 
-/* Outline (küçük aksiyonlar) */
 .btn-outline-primary{
   background: transparent;
   color: var(--sea-700);
@@ -148,24 +129,17 @@ form{ display:grid; gap:12px; }
   transform: translateY(-2px);
 }
 
-/* Link-like */
 .btn-link{ color: var(--muted); background:transparent; padding:10px 12px; font-weight:700; }
 .btn-link:hover{ color:var(--navy); text-decoration:underline; }
 
-/* Small helpers */
 .mb-3{ margin-bottom:12px; }
 
-/* Focus outline accessibility */
 a:focus, button:focus{ outline: 3px solid rgba(43,124,255,0.10); outline-offset:4px; }
 
-/* Tiny interactions */
 input, textarea, .btn, .dropdown-item{ will-change: transform; transition-timing-function: cubic-bezier(.2,.9,.3,1); }
-
-/* ----- Category tabs & product cards (otel sayfasına göre uyumlu) ----- */
 
 .product-page { padding-top:6px; padding-bottom:10px; }
 
-/* Kategori sekmeleri (ör. Beach, Pool, Spa, Rooms) */
 .category-tabs{
   display:flex;
   gap:12px;
@@ -176,7 +150,6 @@ input, textarea, .btn, .dropdown-item{ will-change: transform; transition-timing
   scrollbar-color: rgba(5,20,40,0.08) transparent;
 }
 
-/* Scrollbar webkit */
 .category-tabs::-webkit-scrollbar{ height:8px; }
 .category-tabs::-webkit-scrollbar-thumb{
   background: linear-gradient(90deg, rgba(0,163,163,0.16), rgba(43,124,255,0.12));
@@ -184,7 +157,6 @@ input, textarea, .btn, .dropdown-item{ will-change: transform; transition-timing
 }
 .category-tabs::-webkit-scrollbar-track{ background:transparent; }
 
-/* kategori butonu (pill) */
 .category-tab{
   padding:9px 18px;
   border-radius:999px;
