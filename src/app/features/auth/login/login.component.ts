@@ -39,7 +39,7 @@ export class LoginComponent {
       if (roles.includes('ROLE_ADMIN')) {
         this.router.navigate(['/product-main-menu']);
       } else if (roles.includes('ROLE_CUSTOMER')) {
-        this.router.navigate(['/product-list']);
+        this.router.navigate(['/customer-product-list']);
       } else {
         this.error = "Yetki bulunamadı.";
       }

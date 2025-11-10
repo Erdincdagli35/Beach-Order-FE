@@ -10,6 +10,7 @@ import { ProductEditComponent } from './features/product-management-system/produ
 import { ProductDeleteComponent } from './features/product-management-system/product-delete/product-delete.component';
 import { ProductCreateComponent } from './features/product-management-system/product-create/product-create.component';
 import { ProductMainMenuComponent } from './features/product-management-system/product-main-menu/product-main-menu.component';
+import { CustomerProductListComponent } from './features/orders/customer-product-list/customer-product-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'products/create', component: ProductCreateComponent },
   { path: 'products/edit/:id', component: ProductEditComponent },
   { path: 'products/delete/:id', component: ProductDeleteComponent },
+  { path: 'customer-product-list', component: CustomerProductListComponent},
   { path: 'login', component: LoginComponent }
 ];
 

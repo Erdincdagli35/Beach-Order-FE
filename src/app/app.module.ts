@@ -24,6 +24,7 @@ import { ProductEditComponent } from './features/product-management-system/produ
 import { ProductMainMenuComponent } from './features/product-management-system/product-main-menu/product-main-menu.component';
 import { OrderListComponent } from './features/product-management-system/order-list/order-list.component';
 import { RoomListComponent } from './features/product-management-system/room-list/room-list.component';
+import { CustomerProductListComponent } from './features/orders/customer-product-list/customer-product-list.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { RoomListComponent } from './features/product-management-system/room-lis
     ProductMainMenuComponent,
     OrderListComponent,
     RoomListComponent,
+    CustomerProductListComponent,
   ],
   imports: [
     BrowserModule,
