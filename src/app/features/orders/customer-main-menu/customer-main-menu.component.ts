@@ -1,16 +1,12 @@
 import { Component } from '@angular/core';
-import { ProductsService } from '../../orders/service/product.service';
-import { CartService } from '../../orders/service/cart.service';
 import { Product, Category } from '../../models/product';
-import { TokenService } from 'src/app/core/services/token.service';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-product-main-menu',
-  templateUrl: './product-main-menu.component.html',
-  styleUrls: ['./product-main-menu.component.css']
+  selector: 'app-customer-main-menu',
+  templateUrl: './customer-main-menu.component.html',
+  styleUrls: ['./customer-main-menu.component.css']
 })
-export class ProductMainMenuComponent {
+export class CustomerMainMenuComponent {
 
   products: Product[] = [];
   loading = false;
@@ -25,4 +21,5 @@ export class ProductMainMenuComponent {
     description : '',
     category: Category.Beer
   };
+  
 }
