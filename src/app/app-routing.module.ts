@@ -11,6 +11,8 @@ import { ProductDeleteComponent } from './features/product-management-system/pro
 import { ProductCreateComponent } from './features/product-management-system/product-create/product-create.component';
 import { ProductMainMenuComponent } from './features/product-management-system/product-main-menu/product-main-menu.component';
 import { CustomerProductListComponent } from './features/orders/customer-product-list/customer-product-list.component';
+import { CustomerOrderListComponent } from './features/orders/customer-order-list/customer-order-list.component';
+import { CustomerMainMenuComponent } from './features/orders/customer-main-menu/customer-main-menu.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -19,7 +21,9 @@ const routes: Routes = [
   { path: 'products/create', component: ProductCreateComponent },
   { path: 'products/edit/:id', component: ProductEditComponent },
   { path: 'products/delete/:id', component: ProductDeleteComponent },
+  { path: 'customer-main-menu', component: CustomerMainMenuComponent},
   { path: 'customer-product-list', component: CustomerProductListComponent},
+  { path: 'customer-order-list', component: CustomerOrderListComponent},
   { path: 'login', component: LoginComponent }
 ];
 
