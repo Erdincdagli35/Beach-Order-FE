@@ -16,7 +16,7 @@ import { CustomerMainMenuComponent } from './features/core/customer-main-menu/cu
 import { OrderListComponent } from './features/core/order-management-system/order-list/order-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'customer-main-menu', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'product-main-menu', component: ProductMainMenuComponent},
   { path: 'product-list', component: ProductListComponent},
   { path: 'products/create', component: ProductCreateComponent },
