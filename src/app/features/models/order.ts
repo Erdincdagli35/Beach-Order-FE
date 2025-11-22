@@ -1,9 +1,9 @@
-import { OrderItem } from "./order-item";
+import { Bill } from "./bill";
 
 export interface Order {
   id?: number;
-  customerUsername?: string;
-  items: OrderItem[];
   status?: string;
+  total?: number;
   createdAt?: string;
+  bills: Bill[];
 }

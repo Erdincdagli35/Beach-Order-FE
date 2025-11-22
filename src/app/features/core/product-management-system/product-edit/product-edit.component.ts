@@ -1,8 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductsService } from '../../orders/service/product.service';
+import { ProductsService } from '../../service/product.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Product, Category } from '../../models/product';
+import { Product, Category } from 'src/app/features/models/product';
 
 @Component({
   selector: 'app-product-edit',

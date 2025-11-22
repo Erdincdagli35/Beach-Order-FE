@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { ProductsService } from '../../orders/service/product.service';
-import { CartService } from '../../orders/service/cart.service';
-import { Product, Category } from '../../models/product';
+import { ProductsService } from '../../service/product.service';
+import { Product, Category } from 'src/app/features/models/product';
 import { TokenService } from 'src/app/core/services/token.service';
 import { Router } from '@angular/router';
 

@@ -18,8 +18,8 @@ export class OrdersService {
     return this.http.get<Order[]>(`${this.base}/api/orders`);
   }
 
-  allOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(`${this.base}/api/orders/admin`);
+  list(): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.base}/api/orders/list`);
   }
 
   deliver(orderId: number) {

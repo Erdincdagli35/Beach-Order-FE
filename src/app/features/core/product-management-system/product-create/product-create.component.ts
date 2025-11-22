@@ -1,8 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProductsService } from '../../orders/service/product.service';
+import { ProductsService } from '../../service/product.service';
 import { Router } from '@angular/router';
-import { Category } from '../../models/product';
+import { Category } from 'src/app/features/models/product';
 
 @Component({
   selector: 'app-product-create',

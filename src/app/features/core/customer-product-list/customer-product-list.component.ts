@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../../orders/service/product.service';
-import { CartService } from '../../orders/service/cart.service';
+import { ProductsService } from '../service/product.service';
+import { CartService } from '../service/cart.service';
 import { Product, Category } from '../../models/product';
 import { TokenService } from 'src/app/core/services/token.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  selector: 'app-customer-product-list',
+  templateUrl: './customer-product-list.component.html',
+  styleUrls: ['./customer-product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
- products: Product[] = [];
+export class CustomerProductListComponent implements OnInit {
+  products: Product[] = [];
   loading = false;
   showCreateForm = false;
   errorMessage = '';
@@ -72,6 +72,7 @@ export class ProductListComponent implements OnInit {
     }
   }
 
+  /*
   onDelete(id?: number): void {
     if (!id) return;
     if (!confirm('Bu ürünü silmek istediğine emin misin?')) return;
@@ -89,5 +90,5 @@ export class ProductListComponent implements OnInit {
 
   onCreate(): void {
     this.router.navigate(['/products/create']);
-  }
+  }*/
 }
