@@ -47,4 +47,8 @@ export class OrderListComponent {
         }
       });
     }
+
+  create(): void {
+    this.router.navigate(['order-create']);
+  }
 }

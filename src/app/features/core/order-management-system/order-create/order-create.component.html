@@ -1,0 +1,47 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="order-form">
+  <h1>Yeni Sipariş Oluştur</h1>
+
+  <div formArrayName="items" class="items-wrapper">
+    <div
+      *ngFor="let itemCtrl of itemsControls; let i = index"
+      [formGroupName]="i"
+      class="item-card"
+    >
+      <div class="item-header">
+        <h2>Ürün {{ i + 1 }}</h2>
+        <button type="button" class="btn-icon" (click)="removeItem(i)" title="Ürünü kaldır">
+          &times;
+        </button>
+      </div>
+
+      <div class="item-body">
+        <label class="field">
+          <span class="label-text">Product Id</span>
+          <input type="number" formControlName="productId" class="input" />
+          <small class="error" *ngIf="getItemControl(i, 'productId')?.touched && getItemControl(i, 'productId')?.invalid">
+            Ürün id gerekli ve 1'den büyük olmalı.
+          </small>
+        </label>
+
+        <label class="field">
+          <span class="label-text">Quantity</span>
+          <input type="number" formControlName="qty" class="input" min="1" />
+          <small class="error" *ngIf="getItemControl(i, 'qty')?.touched && getItemControl(i, 'qty')?.invalid">
+            Adet en az 1 olmalı.
+          </small>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button type="button" class="btn secondary" (click)="addItem()">+ Ürün Ekle</button>
+  </div>
+
+  <div class="actions">
+    <button type="submit" class="btn primary" [disabled]="submitting">
+      {{ submitting ? 'Oluşturuluyor...' : 'Oluştur' }}
+    </button>
+    <button type="button" class="btn outline" (click)="cancel()">İptal</button>
+  </div>
+</form>

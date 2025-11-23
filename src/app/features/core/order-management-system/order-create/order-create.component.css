@@ -1,0 +1,167 @@
+/* Genel form container */
+.order-form {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(20, 20, 40, 0.06);
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  color: #222;
+
+  h1 {
+    margin: 0 0 18px 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+}
+
+/* Items wrapper */
+.items-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+/* Her bir item kartı */
+.item-card {
+  border: 1px solid #eef2f6;
+  padding: 14px;
+  border-radius: 10px;
+  background: #fbfdff;
+}
+
+/* Başlık kısmı - ürün başlığı ve silme butonu */
+.item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+  h2 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .btn-icon {
+    background: transparent;
+    border: none;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #a6a6a6;
+    padding: 4px 8px;
+    border-radius: 6px;
+
+    &:hover {
+      background: #ffeeee;
+      color: #c0392b;
+    }
+  }
+}
+
+/* item içeriği: alanlar */
+.item-body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+
+  @media (max-width: 760px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* label + input düzeni */
+.field {
+  display: flex;
+  flex-direction: column;
+
+  .label-text {
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    color: #4b5563;
+  }
+
+  .input {
+    height: 40px;
+    padding: 6px 10px;
+    font-size: 0.95rem;
+    border: 1px solid #d6dbe3;
+    border-radius: 8px;
+    outline: none;
+    background: white;
+    transition: box-shadow 0.12s ease, border-color 0.12s ease;
+
+    &:focus {
+      box-shadow: 0 0 0 4px rgba(99,102,241,0.08);
+      border-color: #6366f1;
+    }
+  }
+
+  .error {
+    margin-top: 6px;
+    color: #b91c1c;
+    font-size: 0.8rem;
+  }
+}
+
+/* controls ve actions butonları */
+.controls {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+}
+
+.actions {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Buton stilleri */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.06s ease, box-shadow 0.06s ease;
+
+  &:active { transform: translateY(1px); }
+
+  &.primary {
+    background: #2563eb;
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.16);
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+
+  &.secondary {
+    background: #e6eefc;
+    color: #1f2937;
+    border: 1px solid #dbeafe;
+  }
+
+  &.outline {
+    background: transparent;
+    border: 1px solid #cbd5e1;
+    color: #374151;
+  }
+}
+
+/* responsive küçük ekranlarda daha sıkışık */
+@media (max-width: 420px) {
+  .order-form { padding: 12px; }
+  .item-body { gap: 8px; }
+  .btn { padding: 8px 10px; font-size: 0.9rem; }
+}

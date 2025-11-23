@@ -14,6 +14,7 @@ import { CustomerOrderListComponent } from './features/core/customer-order-list/
 import { CustomerMainMenuComponent } from './features/core/customer-main-menu/customer-main-menu.component';
 
 import { OrderListComponent } from './features/core/order-management-system/order-list/order-list.component';
+import { OrderCreateComponent } from './features/core/order-management-system/order-create/order-create.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'customer-product-list', component: CustomerProductListComponent},
   { path: 'customer-order-list', component: CustomerOrderListComponent},
   { path: 'order-list', component: OrderListComponent},
+  { path: 'order-create', component: OrderCreateComponent},
   { path: 'login', component: LoginComponent }
 ];
 

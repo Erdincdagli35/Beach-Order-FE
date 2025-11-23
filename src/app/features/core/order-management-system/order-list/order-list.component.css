@@ -160,3 +160,27 @@ button.btn.btn-primary:hover {
   will-change: transform, box-shadow;
   transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
 }
+
+/* CREATE butonu — Sipariş listesi tasarımıyla uyumlu */
+.create-btn {
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.08);
+  font-weight: 700;
+  color: #210e64;
+  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+}
+
+.create-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(37, 99, 235, 0.12);
+  opacity: 0.95;
+}
+
+.create-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.08);
+}
+

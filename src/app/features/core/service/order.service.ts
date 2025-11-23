@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class OrdersService {
-  base = envProd.orderUrl;
+  base = environment.orderUrl;
   constructor(private http: HttpClient) {}
 
   create(order: Order): Observable<Order> {
-    return this.http.post<Order>(`${this.base}/api/orders`, order);
+    return this.http.post<Order>(`${this.base}/api/orders/create`, order);
   }
 
   myOrders(): Observable<Order[]> {
