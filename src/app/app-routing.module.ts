@@ -13,7 +13,7 @@ import { OrderListComponent } from './core/order-management-system/order-list/or
 import { OrderCreateComponent } from './core/order-management-system/order-create/order-create.component';
 import { OrderCancelComponent } from './core/order-management-system/order-cancel/order-cancel.component' ;
 
-import { AdminMainMenuComponent } from './core/menu/product-main-menu/admin-main-menu.component';
+import { AdminMainMenuComponent } from './core/menu/admin-main-menu/admin-main-menu.component';
 import { CustomerMainMenuComponent } from './core/menu/customer-main-menu/customer-main-menu.component';
 
 import { CustomerProductListComponent } from './core/product-management-system/customer-product-list/customer-product-list.component';

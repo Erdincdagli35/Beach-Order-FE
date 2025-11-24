@@ -17,7 +17,7 @@ import { ProductListComponent } from './core/product-management-system/product-l
 import { ProductCreateComponent } from './core/product-management-system/product-create/product-create.component';
 import { ProductDeleteComponent } from './core/product-management-system/product-delete/product-delete.component';
 import { ProductEditComponent } from './core/product-management-system/product-edit/product-edit.component';
-import { AdminMainMenuComponent } from './core/menu/product-main-menu/admin-main-menu.component';
+import { AdminMainMenuComponent } from './core/menu/admin-main-menu/admin-main-menu.component';
 import { OrderListComponent } from './core/order-management-system/order-list/order-list.component';
 import { RoomListComponent } from './core/product-management-system/room-list/room-list.component';
 import { CustomerProductListComponent } from './core/product-management-system/customer-product-list/customer-product-list.component';

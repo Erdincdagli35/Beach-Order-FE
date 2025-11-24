@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { TokenService } from './token.service';
 import { tap } from 'rxjs/operators';
@@ -11,7 +12,7 @@ export class AuthService {
   //private base = environment.apiUrl; // örn: http://localhost:8080
   private base = envProd.authUrl;
 
-  constructor(private http: HttpClient, private token: TokenService) {}
+  constructor(private http: HttpClient, private token: TokenService, private router: Router) {}
 
   login(username: string, password: string): Observable<any> {
   return this.http.post<any>(`${this.base}/api/auth/login`, { username, password })
@@ -19,6 +20,7 @@ export class AuthService {
       if (res?.accessToken) this.token.setAccessToken(res.accessToken);
       if (res?.refreshToken) this.token.setRefreshToken(res.refreshToken);
       if (res?.roles) this.token.setRoles(res.roles); // burada rolleri saklıyoruz
+      this.router.navigate(['admin-main-menu']);
     }));
 }
 
