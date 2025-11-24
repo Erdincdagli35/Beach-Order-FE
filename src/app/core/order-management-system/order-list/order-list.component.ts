@@ -1,0 +1,63 @@
+import { Component } from '@angular/core';
+import { OrdersService } from '../../services/order.service';
+import { TokenService } from 'src/app/core/services/token.service';
+import { Router } from '@angular/router';
+import { Bill } from '../../models/order/bill';
+import { Order } from '../../models/order/order';
+
+
+@Component({
+  selector: 'app-order-list',
+  templateUrl: './order-list.component.html',
+  styleUrls: ['./order-list.component.css']
+})
+export class OrderListComponent {
+
+    orders: Order[] = [];
+    errorMessage = '';
+  
+    // default category atamalısın (ör: Beer)
+    newOrder: { id: number, status: string, total: number, createdAt:string, bills: Bill[]} = {
+      status: '',
+      total: 0,
+      createdAt: '',
+      id: 0,
+      bills: []
+    };
+  
+  
+    constructor(
+      private os: OrdersService,
+      private router: Router,
+      public token: TokenService
+    ) {}
+  
+    ngOnInit(): void {
+      this.loadOrders();
+    }
+  
+    loadOrders(): void {
+      this.errorMessage = '';
+      this.os.list().subscribe({
+        next: (p) => {
+          this.orders = p || [];
+        },
+        error: (err) => {
+          console.error('Order list error', err);
+          this.errorMessage = err?.error?.message || err.message || 'Liste yüklenirken hata oluştu.';
+        }
+      });
+    }
+
+  create(): void {
+    this.router.navigate(['order-create']);
+  }
+  
+  cancel(id: number): void {
+
+    this.os.cancel(id).subscribe({
+      next: () => { this.loadOrders(); },
+      //error: err => { alert('Silme başarısız: ' + (err.message || err)); }
+    });
+  }
+}

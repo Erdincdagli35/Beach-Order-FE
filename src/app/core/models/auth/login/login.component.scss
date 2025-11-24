@@ -1,0 +1,136 @@
+/* Sayfa arkaplanı */
+.login-page {
+  background: linear-gradient(135deg, #e8f3ff 0%, #ffffff 100%);
+}
+
+/* Kart stil */
+.login-card {
+  width: 900px;
+  max-width: 95%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Sol hero bölümü */
+.login-hero {
+  background-image: linear-gradient(135deg, #2b9cff, #3dd0ff 80%);
+  min-height: 260px;
+  text-align: center;
+  padding: 2.5rem;
+}
+
+/* Kart body */
+.card-body {
+  padding: 2rem 2rem;
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 8px;
+  height: 44px;
+  box-shadow: none;
+  transition: box-shadow 0.15s ease, transform 0.08s ease;
+}
+
+.form-control:focus {
+  box-shadow: 0 4px 18px rgba(43, 156, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+/* Input group icon */
+.input-group-text {
+  background: transparent;
+  border-right: 0;
+  min-width: 46px;
+  justify-content: center;
+  border-radius: 8px 0 0 8px;
+}
+
+/* Button */
+.btn-primary {
+  border-radius: 10px;
+  height: 48px;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(43, 156, 255, 0.16);
+  transition: transform 0.08s ease, box-shadow 0.12s ease;
+}
+
+.btn-primary:disabled {
+  opacity: 0.85;
+  cursor: not-allowed;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+/* Responsive - mobilde hero gizle */
+@media (max-width: 767px) {
+  .login-card { border-radius: 0.75rem; }
+  .login-hero { display: none; }
+  .card-body { padding: 1.5rem; }
+}
+
+/* === Mobil uyumluluk için temel ayarlar === */
+* {
+  box-sizing: border-box;       /* Padding + border taşma yapmasın */
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;           /* Yatay kaymayı tamamen engeller */
+  font-family: 'Inter', sans-serif; /* İstersen değiştir */
+}
+
+/* Görseller taşmasın */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Tüm container ve kart yapıları otomatik olarak responsive olsun */
+.container, 
+.component-wrapper, 
+.page-wrapper {
+  width: 100%;
+  max-width: 1200px; /* büyük ekranlar için limit */
+  margin: 0 auto;
+  padding: 0 1rem;   /* telefon için iç boşluk */
+}
+
+/* Grid veya column yapıları telefonda otomatik düşsün */
+.row, .grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.col {
+  flex: 1;
+  min-width: 250px; /* telefon için minimum güvenli genişlik */
+}
+
+/* === Mobil için genel media query === */
+@media (max-width: 768px) {
+  /* Başlık, metin boyutu küçültme */
+  h1 { font-size: 1.7rem; }
+  h2 { font-size: 1.4rem; }
+  h3 { font-size: 1.2rem; }
+  p  { font-size: 1rem; }
+
+  /* Margin/padding optimize */
+  .container, 
+  .component-wrapper, 
+  .page-wrapper {
+    padding: 0 0.7rem;
+  }
+
+  /* Flex yapılar dikey hizaya geçsin */
+  .row, .grid {
+    flex-direction: column;
+  }
+}

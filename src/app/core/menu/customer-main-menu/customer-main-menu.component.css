@@ -1,0 +1,63 @@
+/* === Mobil uyumluluk için temel ayarlar === */
+* {
+  box-sizing: border-box;       /* Padding + border taşma yapmasın */
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;           /* Yatay kaymayı tamamen engeller */
+  font-family: 'Inter', sans-serif; /* İstersen değiştir */
+}
+
+/* Görseller taşmasın */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Tüm container ve kart yapıları otomatik olarak responsive olsun */
+.container, 
+.component-wrapper, 
+.page-wrapper {
+  width: 100%;
+  max-width: 1200px; /* büyük ekranlar için limit */
+  margin: 0 auto;
+  padding: 0 1rem;   /* telefon için iç boşluk */
+}
+
+/* Grid veya column yapıları telefonda otomatik düşsün */
+.row, .grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.col {
+  flex: 1;
+  min-width: 250px; /* telefon için minimum güvenli genişlik */
+}
+
+/* === Mobil için genel media query === */
+@media (max-width: 768px) {
+  /* Başlık, metin boyutu küçültme */
+  h1 { font-size: 1.7rem; }
+  h2 { font-size: 1.4rem; }
+  h3 { font-size: 1.2rem; }
+  p  { font-size: 1rem; }
+
+  /* Margin/padding optimize */
+  .container, 
+  .component-wrapper, 
+  .page-wrapper {
+    padding: 0 0.7rem;
+  }
+
+  /* Flex yapılar dikey hizaya geçsin */
+  .row, .grid {
+    flex-direction: column;
+  }
+}

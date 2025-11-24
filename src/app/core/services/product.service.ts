@@ -1,0 +1,38 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Product } from '../../core/models/product/product';
+import { environment } from '../../../enviroments/environment';
+import { environment as envProd } from '../../../enviroments/enviroment.prod';
+import { Observable } from 'rxjs';
+
+@Injectable({ providedIn: 'root' })
+export class ProductsService {
+  base = envProd.productUrl;
+  //base = environment.orderUrl;
+  constructor(private http: HttpClient) {}
+
+  list(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.base}/api/products/list`);
+  }
+
+  listById(id : number): Observable<Product> {
+    return this.http.get<Product>(`${this.base}/api/products/list/${id}`);
+  }
+
+  get(id: number) {
+    return this.http.get<Product>(`${this.base}/api/products/${id}`);
+  }
+
+  // admin create (optional)
+  create(product: Partial<Product>) {
+    return this.http.post<Product>(`${this.base}/api/products/create`, product);
+  }
+
+  update(id: number, product: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.base}/api/products/update/${id}`, product);
+  }
+
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.base}/api/products/delete/${id}`);
+  }
+}

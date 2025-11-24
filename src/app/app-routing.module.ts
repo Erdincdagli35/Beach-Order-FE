@@ -11,7 +11,7 @@ import { ProductCreateComponent } from './core/product-management-system/product
 
 import { OrderListComponent } from './core/order-management-system/order-list/order-list.component';
 import { OrderCreateComponent } from './core/order-management-system/order-create/order-create.component';
-import { OrderCancelComponent } from './core/order-management-system/order-cancel/order-cancel.component';
+import { OrderCancelComponent } from './core/order-management-system/order-cancel/order-cancel.component' ;
 
 import { ProductMainMenuComponent } from './core/menu/product-main-menu/product-main-menu.component';
 import { CustomerMainMenuComponent } from './core/menu/customer-main-menu/customer-main-menu.component';
