@@ -21,7 +21,7 @@ import { CustomerOrderListComponent } from './core/order-management-system/custo
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'admin-main-menu', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'admin-main-menu', component: AdminMainMenuComponent},
   { path: 'product-list', component: ProductListComponent},
   { path: 'products/create', component: ProductCreateComponent },
