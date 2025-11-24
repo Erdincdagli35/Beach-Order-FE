@@ -20,7 +20,7 @@ export class AuthService {
       if (res?.accessToken) this.token.setAccessToken(res.accessToken);
       if (res?.refreshToken) this.token.setRefreshToken(res.refreshToken);
       if (res?.roles) this.token.setRoles(res.roles); // burada rolleri saklıyoruz
-      this.router.navigate(['admin-main-menu']);
+      //this.router.navigate(['admin-main-menu']);
     }));
 }
 
