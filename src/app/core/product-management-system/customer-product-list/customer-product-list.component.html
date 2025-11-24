@@ -12,6 +12,23 @@
     </button>
   </div>
 
+  <!-- Admin: Yeni Ürün Ekle -->
+   <div class="action-buttons d-flex justify-content-end gap-2">
+    <button class="btn btn-primary" (click)="router.navigate(['order-create'])">
+      <span class="btn-icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 3h2l.4 2M7 13h10l3-8H6.4" stroke="currentColor" stroke-width="1.6"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="10" cy="20" r="1" fill="currentColor" />
+          <circle cx="18" cy="20" r="1" fill="currentColor" />
+        </svg>
+      </span>
+      <span class="btn-text">View the Cart</span>
+    </button>
+  </div>
+
+
   <!-- Create Form -->
   <div *ngIf="showCreateForm && token.hasRole('ROLE_ADMIN')" class="product-form card p-3 shadow-sm mb-4">
     <form #productForm="ngForm" novalidate>
@@ -49,15 +66,15 @@
         <label class="mb-1">{{ p.description }}</label>
 
         <div class="d-flex justify-content-end gap-2">
-          <button class="btn btn-outline-primary btn-sm">Add to Cart</button>
-        </div>
+          <button class="btn btn-outline-danger btn-sm" (click)="onAddToCart(p)">Add to Cart</button>        
+       </div>
       </div>
     </div>
   </div>
 
   <div *ngIf="selectedCategory && (!groupedProducts[selectedCategory] || !groupedProducts[selectedCategory].length)"
        class="text-muted text-center mt-5">
-    None product found by this category
+    None product find by this category
   </div>
 
 </div>

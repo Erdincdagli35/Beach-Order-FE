@@ -4,6 +4,7 @@
 .product-page {
   padding-top: 6px;
   padding-bottom: 8px;
+  text-align: left; /* kesin sola hizalama */
 }
 
 /* Kategori tab bar */
@@ -64,8 +65,10 @@
   min-height: 120px;
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
+  justify-content:flex-start; /* soldan başlasın */
+  align-items: flex-start;    /* içerikler sola yaslı olsun */
   color: #071124;
+  text-align: left;
 }
 
 /* Hover etkisi */
@@ -96,12 +99,17 @@
   min-height:38px;
   overflow:hidden;
   text-overflow:ellipsis;
+  text-align: left;
 }
 
-/* Button grupu (sağ alt) */
+/* Button grupu (sağ alt) -> solda başlasın, ancak kart sonunda sağa yaslanmasını istersen justify-content: space-between kullan */
 .product-card .d-flex {
   margin-top:12px;
   align-items:center;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; /* SOLDAN başlaması için */
+  gap: 8px;
 }
 
 /* Küçük düğmeler: outline stillerini palete göre güncelle */
@@ -140,6 +148,7 @@
   border-radius: 12px;
   border: 1px solid rgba(15,23,42,0.04);
   box-shadow: 0 10px 30px rgba(10,20,30,0.06);
+  text-align: left;
 }
 
 /* Form input & select override (küçük radius, daha uyumlu görünüm) */
@@ -168,12 +177,14 @@
 .text-center.text-muted {
   color: var(--muted);
   padding: 26px 12px;
+  text-align: left;
 }
 
-/* Responsive: kart içi butonlar küçük ekranlarda alt alta gelsin */
+/* Responsive: kart içi butonlar küçük ekranlarda alt alta gelsin
+   (koruyoruz ama center-align yapan ekstra kuralları kaldırdık) */
 @media (max-width:720px) {
   .product-card { padding:14px; }
-  .product-card .d-flex { flex-direction: row; gap:8px; justify-content:flex-end; flex-wrap:wrap; }
+  .product-card .d-flex { flex-direction: row; gap:8px; justify-content:flex-start; flex-wrap:wrap; }
   .category-tabs { gap:8px; }
 }
 
@@ -183,18 +194,13 @@
   transition-timing-function: cubic-bezier(.2,.9,.3,1);
 }
 
-/* === Mobil uyumluluk için temel ayarlar === */
-* {
-  box-sizing: border-box;       /* Padding + border taşma yapmasın */
-  margin: 0;
-  padding: 0;
-}
-
+/* Temel sayfa düzeni: sola hizalama korunacak */
 html, body {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;           /* Yatay kaymayı tamamen engeller */
-  font-family: 'Inter', sans-serif; /* İstersen değiştir */
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+  text-align: left; /* Özet: global sola hizalama */
 }
 
 /* Görseller taşmasın */
@@ -212,6 +218,7 @@ img, video {
   max-width: 1200px; /* büyük ekranlar için limit */
   margin: 0 auto;
   padding: 0 1rem;   /* telefon için iç boşluk */
+  text-align: left;
 }
 
 /* Grid veya column yapıları telefonda otomatik düşsün */
@@ -219,20 +226,22 @@ img, video {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  align-items: flex-start; /* içerikler üstten hizalansın */
 }
 
 .col {
   flex: 1;
   min-width: 250px; /* telefon için minimum güvenli genişlik */
+  text-align: left;
 }
 
-/* === Mobil için genel media query === */
+/* === Mobil için hafif responsive ayarlar === */
 @media (max-width: 768px) {
   /* Başlık, metin boyutu küçültme */
-  h1 { font-size: 1.7rem; }
-  h2 { font-size: 1.4rem; }
-  h3 { font-size: 1.2rem; }
-  p  { font-size: 1rem; }
+  h1 { font-size: 1.7rem; text-align: left; }
+  h2 { font-size: 1.4rem; text-align: left; }
+  h3 { font-size: 1.2rem; text-align: left; }
+  p  { font-size: 1rem; text-align: left; }
 
   /* Margin/padding optimize */
   .container, 
@@ -244,5 +253,124 @@ img, video {
   /* Flex yapılar dikey hizaya geçsin */
   .row, .grid {
     flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* --- Top action bar (product page) --- */
+.top-actions {
+  display: flex;
+  justify-content: space-between; /* solda başlık, sağda butonlar */
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  width: 100%;
+  text-align: left;
+}
+
+/* Eğer başlık varsa solda hizala */
+.top-actions .page-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Buton grubunu sağa yasla */
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* Genel buton temel (override bootstrap .btn ile uyumlu) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+  will-change: transform, box-shadow;
+  user-select: none;
+  text-align: center; /* buton içi metin ortalanmış */
+}
+
+/* Ghost / outline buton (hafif, secondary) */
+.btn-ghost {
+  background: transparent;
+  color: var(--primary-700);
+  border-color: rgba(15,23,42,0.06);
+  box-shadow: 0 6px 16px rgba(10,20,30,0.03);
+}
+.btn-ghost:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(90deg, rgba(37,99,235,0.04), rgba(14,165,164,0.03));
+}
+
+/* Primary buton — palette uyumlu gradient */
+.btn-primary {
+  background: linear-gradient(90deg, rgba(37,99,235,0.9), rgba(14,165,164,0.9));
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 12px 32px rgba(37,99,235,0.12);
+}
+.btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(37,99,235,0.14);
+}
+
+/* Buton içi ikon stil (küçük, hizalı) */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  opacity: 0.98;
+}
+
+/* Buton metni, gerektiğinde gizleme (responsive) */
+.btn-text { line-height: 1; }
+
+/* Küçük sayaç / badge (sepetteki ürün sayısı) */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  margin-left: 6px;
+  box-shadow: 0 6px 18px rgba(10,20,30,0.06);
+}
+
+/* Mobilde butonlar alt alta geçsin ve tam genişlik olsun (hafif) */
+@media (max-width: 720px) {
+  .top-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .action-buttons {
+    justify-content: flex-end;
+    gap: 8px;
+  }
+  .btn {
+    width: auto;
+  }
+  .btn-primary {
+    width: 100%;
+    justify-content: center;
   }
 }
