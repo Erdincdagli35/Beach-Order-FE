@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { Bill } from '../../models/order/bill';
 import { Order } from '../../models/order/order';
 
-
 @Component({
   selector: 'app-order-list',
   templateUrl: './order-list.component.html',
@@ -16,13 +15,13 @@ export class OrderListComponent {
     orders: Order[] = [];
     errorMessage = '';
 
-    // default category atamalısın (ör: Beer)
-    newOrder: { id: number, status: string, total: number, createdAt:string, bills: Bill[]} = {
+    newOrder: { id: number, status: string, total: number, createdAt:string, bills: Bill[], personalId: number} = {
       status: '',
       total: 0,
       createdAt: '',
       id: 0,
-      bills: []
+      bills: [],
+      personalId: 0
     };
 
 

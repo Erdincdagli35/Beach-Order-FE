@@ -1,6 +1,23 @@
 <form [formGroup]="form" (ngSubmit)="submit()" class="order-form">
   <h1>Yeni Sipariş Oluştur</h1>
 
+  <!-- Personal ID alanı: formArray dışında -->
+  <div class="item-body">
+    <label class="field">
+      <span class="label-text">Personal ID</span>
+      <input type="text" 
+         formControlName="personalId" 
+         class="input" 
+         placeholder="Personal ID" 
+         maxlength="11"
+         pattern="[0-9]{11}" />
+        <small class="error" *ngIf="form.get('personalId')?.touched && form.get('personalId')?.invalid">
+        Geçerli bir Personal ID giriniz.
+      </small>
+    </label>
+  </div>
+
+  <!-- Ürün listesi -->
   <div formArrayName="items" class="items-wrapper">
     <div
       *ngFor="let itemCtrl of itemsControls; let i = index"

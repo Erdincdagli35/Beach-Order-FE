@@ -19,33 +19,38 @@
           <th>Status</th>
           <th>Total</th>
           <th>Created At</th>
+          <th>Personel ID</th>
           <th>Bills (Piece / Product Number)</th>
           <th>Actions</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr *ngFor="let o of orders">
-          <td>{{ o.id }}</td>
-          <td>{{ o.status }}</td>
-          <td>{{ o.total }}</td>
-          <td>{{ o.createdAt | date:'short' }}</td>
-
-          <td>
-            <ul class="mb-0 ps-3">
-              <li *ngFor="let b of o.bills">
-                Piece: {{ b.piece }} |
-                Product Name: {{ b.productName }}
-              </li>
-            </ul>
-          </td>
-          <td>
-            <button class="btn btn-primary create-btn" (click)="willDeliver(o.id)">Will Deliver</button>
-            <button class="btn btn-primary create-btn" (click)="delivered(o.id)">Delivered</button>
-            <button class="btn btn-primary create-btn" (click)="cancel(o.id)">Cancel</button>
+      <tr *ngFor="let o of orders">
+        <td>{{ o.id }}</td>
+        <td>{{ o.status }}</td>
+        <td>{{ o.total }}</td>
+        <td>{{ o.createdAt | date:'short' }}</td>
+        <td>{{ o.personalId }}</td>
+        <!-- Bills alanı -->
+        <td>
+          <ul class="mb-0 ps-3">
+            <li *ngFor="let b of o.bills">
+              <span>Piece: {{ b.piece }}</span> |
+              <span>Product Name: {{ b.productName }}</span>
+            </li>
+          </ul>
         </td>
-        </tr>
-      </tbody>
+
+        <!-- Aksiyon butonları -->
+        <td class="d-flex gap-1">
+          <button class="btn btn-primary create-btn" (click)="willDeliver(o.id)">Will Deliver</button>
+          <button class="btn btn-primary create-btn" (click)="delivered(o.id)">Delivered</button>
+          <button class="btn btn-primary create-btn" (click)="cancel(o.id)">Cancel</button>
+        </td>
+      </tr>
+    </tbody>
+
     </table>
   </div>
 

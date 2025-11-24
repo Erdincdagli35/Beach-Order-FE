@@ -4,6 +4,7 @@ import { Order } from '../../core/models/order/order';
 import { environment } from '../../../enviroments/environment';
 import { environment as envProd } from '../../../enviroments/enviroment.prod';
 import { Observable } from 'rxjs';
+import { OrderCreateRequest } from '../models/order/order-crate-request';
 
 @Injectable({ providedIn: 'root' })
 export class OrdersService {
@@ -11,8 +12,8 @@ export class OrdersService {
   //base = environment.orderUrl ;
   constructor(private http: HttpClient) {}
 
-  create(order: Order): Observable<Order> {
-    return this.http.post<Order>(`${this.base}/api/orders/create`, order);
+  create(orderCreateReq: OrderCreateRequest): Observable<Order> {
+    return this.http.post<Order>(`${this.base}/api/orders/create`, orderCreateReq);
   }
 
   myOrders(): Observable<Order[]> {

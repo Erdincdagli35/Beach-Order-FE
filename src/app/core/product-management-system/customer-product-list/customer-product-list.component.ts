@@ -17,6 +17,7 @@ export class CustomerProductListComponent implements OnInit {
     errorMessage = '';
     selectedCategory: string | null = null;
     qtyForProduct: Record<number, number> = {};
+    personalId = "";
     
     newProduct: { name: string; price: number; description: string, category: Category } = {
       name: '',

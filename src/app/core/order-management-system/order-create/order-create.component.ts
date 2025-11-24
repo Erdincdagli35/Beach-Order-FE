@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, FormArray, Validators, AbstractControl } from '
 import { Router } from '@angular/router';
 import { OrdersService } from '../../services/order.service';
 import { Item } from '../../models/order/item';
-import { Cart } from '../../models/order/cart';
 import { CartService } from '../../services/cart.service';
+import { OrderCreateRequest } from '../../models/order/order-crate-request';
 
 @Component({
   selector: 'app-order-create',
@@ -21,44 +21,49 @@ export class OrderCreateComponent implements OnInit {
     private router: Router,
     private cartService: CartService
   ) {
+    // Burada personelId kontrolü oluşturuldu (email yerine)
     this.form = this.fb.group({
+      personalId: [this.cartService.getPersonalId() || ''],
       items: this.fb.array([], Validators.required)
     });
   }
 
+  // FormArray getter
+  get items(): FormArray {
+    return this.form.get('items') as FormArray;
+  }
+
+  // Template için controls getter
+  get itemsControls(): AbstractControl[] {
+    return this.items.controls;
+  }
+
   ngOnInit(): void {
-    const cart = this.cartService.getItems();
-    if (cart && cart.length) {
-      // sepetten gelen her item için form grubu oluştur
-      this.items.clear();
-      cart.forEach(ci => this.items.push(this.createItemGroup({
+    const order = this.cartService.getOrderRequest(); // OrderCreateRequest bekliyoruz
+    this.items.clear();
+
+    if (order?.items && order.items.length) {
+      order.items.forEach(ci => this.items.push(this.createItemGroup({
         productId: ci.productId,
         productName: ci.productName,
         qty: ci.qty
       })));
     } else {
-      // default bir item bırak
       this.addItem();
+    }
+
+    // Eğer cart'ta kayıtlı personelId varsa form'a set et
+    if (order?.personalId) {
+      this.form.get('personalId')?.setValue(order.personalId);
     }
   }
 
-  // Factory for a single Item formGroup
   private createItemGroup(data?: Partial<Item>): FormGroup {
     return this.fb.group({
       productId: [data?.productId ?? null, [Validators.required, Validators.min(1)]],
       productName: [{ value: data?.productName ?? '', disabled: true }],
       qty: [data?.qty ?? 1, [Validators.required, Validators.min(1)]]
     });
-  }
-
-  // Getter for items FormArray
-  get items(): FormArray {
-    return this.form.get('items') as FormArray;
-  }
-
-  // Helper to access a specific item control in template: itemsControls[index].get('productId')...
-  get itemsControls(): AbstractControl[] {
-    return this.items.controls;
   }
 
   addItem(data?: Partial<Item>): void {
@@ -69,39 +74,42 @@ export class OrderCreateComponent implements OnInit {
     if (this.items.length > 1) {
       this.items.removeAt(index);
     } else {
-      // isterseniz 1 tane kalmasını engellemek yerine temizleyebilirsiniz:
       this.items.at(0).reset({ productId: null, productName: '', qty: 1 });
     }
   }
 
-  // kısa getter'lar (template tipi hatalarını önler)
-  // Burada örnek olarak items üzerinden spesifik alanlara erişim yapabilirsiniz
   getItemControl(index: number, name: string) {
     return (this.items.at(index) as FormGroup).get(name);
   }
 
   submit(): void {
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
-      return;
-    }
-
-    this.submitting = true;
-    const payload = this.form.value; // { items: [{productId, productName, qty}, ...] }
-
-    this.orderService.create(payload).subscribe({
-      next: () => {
-        this.submitting = false;
-        this.cartService.clear();
-        this.router.navigate(['customer-main-menu']);
-      },
-      error: err => {
-        this.submitting = false;
-        alert('Oluşturma hatası: ' + (err?.message || err));
-      }
-    });
+  if (this.form.invalid) {
+    this.form.markAllAsTouched();
+    return;
   }
 
+  this.submitting = true;
+
+  const payload = {
+    personalId: this.form.value.personalId, // backend uyumlu
+    items: this.items.value
+  };
+
+  // CartService’e set et
+  this.cartService.setPersonalId(payload.personalId);
+
+  this.orderService.create(payload).subscribe({
+    next: () => {
+      this.submitting = false;
+      this.cartService.clear();
+      this.router.navigate(['customer-main-menu']);
+    },
+    error: err => {
+      this.submitting = false;
+      alert('Oluşturma hatası: ' + (err?.message || err));
+    }
+  });
+}
 
   cancel(): void {
     this.router.navigate(['customer-main-menu']);
