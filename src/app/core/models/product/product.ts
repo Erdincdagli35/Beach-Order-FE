@@ -12,7 +12,7 @@ export enum Category {
   Burger = 'Burger',
 
   Coffee = 'Coffee',
-  HotDrink = 'HotDrink'
+  HotDrink = 'Hot Drink'
 }
 
 export interface Product {
