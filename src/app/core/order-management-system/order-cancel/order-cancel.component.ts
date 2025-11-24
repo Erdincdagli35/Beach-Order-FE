@@ -36,6 +36,6 @@ export class OrderCancelComponent {
       }
   
       goToOrder() {
-        this.router.navigate(['order-list']);
+        this.router.navigate(['product-main-menu']);
       }
 }

@@ -31,7 +31,15 @@ export class OrdersService {
     return this.http.delete<void>(`${this.base}/api/orders/cancel/${id}`);
   }
   
-  update(id: number, order: Order): Observable<Order[]> {
-    return this.http.get<Order[]>(`${this.base}/api/orders/edit/${id}`);
+  update(id: number, order: Order): Observable<Order> {
+    return this.http.put<Order>(`${this.base}/api/orders/edit/${id}`, order);
+  }
+
+  willDeliver(id: number): Observable<Order> {
+    return this.http.put<Order>(`${this.base}/api/orders/will/deliver/${id}`,id);
+  }
+
+  delivered(id: number): Observable<Order> {
+    return this.http.put<Order>(`${this.base}/api/orders/delivered/${id}`,id);
   }
 }

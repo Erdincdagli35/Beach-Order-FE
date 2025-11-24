@@ -13,7 +13,7 @@ import { OrderListComponent } from './core/order-management-system/order-list/or
 import { OrderCreateComponent } from './core/order-management-system/order-create/order-create.component';
 import { OrderCancelComponent } from './core/order-management-system/order-cancel/order-cancel.component' ;
 
-import { ProductMainMenuComponent } from './core/menu/product-main-menu/product-main-menu.component';
+import { AdminMainMenuComponent } from './core/menu/product-main-menu/admin-main-menu.component';
 import { CustomerMainMenuComponent } from './core/menu/customer-main-menu/customer-main-menu.component';
 
 import { CustomerProductListComponent } from './core/product-management-system/customer-product-list/customer-product-list.component';
@@ -22,7 +22,7 @@ import { CustomerOrderListComponent } from './core/order-management-system/custo
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'product-main-menu', component: ProductMainMenuComponent},
+  { path: 'admin-main-menu', component: AdminMainMenuComponent},
   { path: 'product-list', component: ProductListComponent},
   { path: 'products/create', component: ProductCreateComponent },
   { path: 'products/edit/:id', component: ProductEditComponent },

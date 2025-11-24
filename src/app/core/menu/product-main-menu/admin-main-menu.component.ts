@@ -5,11 +5,11 @@ import { TokenService } from 'src/app/core/services/token.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-product-main-menu',
-  templateUrl: './product-main-menu.component.html',
-  styleUrls: ['./product-main-menu.component.css']
+  selector: 'app-admin-main-menu',
+  templateUrl: './admin-main-menu.component.html',
+  styleUrls: ['./admin-main-menu.component.css']
 })
-export class ProductMainMenuComponent {
+export class AdminMainMenuComponent {
 
   products: Product[] = [];
   loading = false;

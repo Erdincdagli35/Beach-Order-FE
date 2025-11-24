@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, FormArray, Validators, AbstractControl } from '
 import { Router } from '@angular/router';
 import { OrdersService } from '../../services/order.service';
 import { Item } from '../../models/order/item';
-import { Order } from '../../models/order/order';
+import { Cart } from '../../models/order/cart';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-order-create',
@@ -17,21 +18,35 @@ export class OrderCreateComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private orderService: OrdersService,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {
-    // form init
     this.form = this.fb.group({
-      items: this.fb.array([ this.createItemGroup() ], Validators.required)
+      items: this.fb.array([], Validators.required)
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const cart = this.cartService.getItems();
+    if (cart && cart.length) {
+      // sepetten gelen her item için form grubu oluştur
+      this.items.clear();
+      cart.forEach(ci => this.items.push(this.createItemGroup({
+        productId: ci.productId,
+        productName: ci.productName,
+        qty: ci.qty
+      })));
+    } else {
+      // default bir item bırak
+      this.addItem();
+    }
+  }
 
   // Factory for a single Item formGroup
   private createItemGroup(data?: Partial<Item>): FormGroup {
     return this.fb.group({
       productId: [data?.productId ?? null, [Validators.required, Validators.min(1)]],
-      productName: [data?.productName ?? '', [Validators.required, Validators.maxLength(200)]],
+      productName: [{ value: data?.productName ?? '', disabled: true }],
       qty: [data?.qty ?? 1, [Validators.required, Validators.min(1)]]
     });
   }
@@ -66,13 +81,19 @@ export class OrderCreateComponent implements OnInit {
   }
 
   submit(): void {
-    this.submitting = true;
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
 
-    const payload = this.form.value;
+    this.submitting = true;
+    const payload = this.form.value; // { items: [{productId, productName, qty}, ...] }
 
     this.orderService.create(payload).subscribe({
       next: () => {
         this.submitting = false;
+        // başarılıysa sepeti temizle
+        this.cartService.clear();
         this.router.navigate(['product-main-menu']);
       },
       error: err => {
@@ -81,6 +102,7 @@ export class OrderCreateComponent implements OnInit {
       }
     });
   }
+  
 
   cancel(): void {
     this.router.navigate(['product-main-menu']);

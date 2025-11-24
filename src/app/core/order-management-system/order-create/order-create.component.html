@@ -16,11 +16,8 @@
 
       <div class="item-body">
         <label class="field">
-          <span class="label-text">Product Id</span>
-          <input type="number" formControlName="productId" class="input" />
-          <small class="error" *ngIf="getItemControl(i, 'productId')?.touched && getItemControl(i, 'productId')?.invalid">
-            Ürün id gerekli ve 1'den büyük olmalı.
-          </small>
+          <span class="label-text">Product Name</span>
+          <span class="input readonly">{{ getItemControl(i, 'productName')?.value }}</span>
         </label>
 
         <label class="field">

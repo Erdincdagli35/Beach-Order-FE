@@ -16,8 +16,8 @@ export class ProductListComponent implements OnInit {
   showCreateForm = false;
   errorMessage = '';
   selectedCategory: string | null = null;
-
-  // default category atamalısın (ör: Beer)
+  qtyForProduct: Record<number, number> = {};
+  
   newProduct: { name: string; price: number; description: string, category: Category } = {
     name: '',
     price: 0,
@@ -25,16 +25,14 @@ export class ProductListComponent implements OnInit {
     category: Category.Beer
   };
 
-  // kategori listesini template'e bağlamak için
   categories = Object.values(Category) as Category[];
 
-  // Gruplanmış: { Beer: [...], Gin: [...] }
   groupedProducts: Record<string, Product[]> = {};
 
   constructor(
     private ps: ProductsService,
-    private cart: CartService,
-    private router: Router,
+    private cartService: CartService,
+    public router: Router,
     public token: TokenService
   ) {}
 
@@ -89,5 +87,17 @@ export class ProductListComponent implements OnInit {
 
   onCreate(): void {
     this.router.navigate(['/products/create']);
+  }
+
+  onAddToCart(product: Product) {
+    const qty = this.qtyForProduct[product.id] || 1;
+
+    this.cartService.addItem({
+      productId: product.id,
+      productName: product.name,
+      qty: qty
+    });
+
+    alert(`${product.name} sepete eklendi (x${qty})`);
   }
 }

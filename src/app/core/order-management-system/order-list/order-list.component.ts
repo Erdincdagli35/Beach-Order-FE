@@ -60,4 +60,22 @@ export class OrderListComponent {
       //error: err => { alert('Silme başarısız: ' + (err.message || err)); }
     });
   }
+
+  willDeliver(id: number): void {
+
+    this.os.willDeliver(id).subscribe({
+      next: () => { this.loadOrders(); },
+    });
+
+    this.router.navigate(['product-main-menu']);
+  }
+
+  delivered(id: number): void {
+
+    this.os.delivered(id).subscribe({
+      next: () => { this.loadOrders(); },
+    });
+
+    this.router.navigate(['product-main-menu']);
+  }
 }

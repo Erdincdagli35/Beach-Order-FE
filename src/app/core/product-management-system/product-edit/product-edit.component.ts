@@ -115,10 +115,10 @@ export class ProductEditComponent implements OnInit{
       }
     });
 
-    this.router.navigate(['product-list']);
+    this.router.navigate(['product-main-menu']);
   }
 
   cancel(): void {
-    this.router.navigate(['product-list']);
+    this.router.navigate(['product-main-menu']);
   }
 }

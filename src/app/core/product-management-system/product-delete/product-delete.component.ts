@@ -37,6 +37,6 @@ export class ProductDeleteComponent {
     }
 
     goToProduct() {
-      this.router.navigate(['product-list']);
+      this.router.navigate(['product-main-menu']);
     }
 }
