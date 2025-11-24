@@ -18,7 +18,7 @@ import { OrderCreateComponent } from './core/order-management-system/order-creat
 import { OrderCancelComponent } from './core/order-management-system/order-cancel/order-cancel.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'product-main-menu', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'product-main-menu', component: ProductMainMenuComponent},
   { path: 'product-list', component: ProductListComponent},
   { path: 'products/create', component: ProductCreateComponent },
