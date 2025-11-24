@@ -8,14 +8,17 @@ import { ProductListComponent } from './core/product-management-system/product-l
 import { ProductEditComponent } from './core/product-management-system/product-edit/product-edit.component';
 import { ProductDeleteComponent } from './core/product-management-system/product-delete/product-delete.component';
 import { ProductCreateComponent } from './core/product-management-system/product-create/product-create.component';
-import { ProductMainMenuComponent } from './core/menu/product-main-menu/product-main-menu.component';
-import { CustomerProductListComponent } from './core/product-management-system/customer-product-list/customer-product-list.component';
-import { CustomerOrderListComponent } from './core/order-management-system/customer-order-list/customer-order-list.component';
-import { CustomerMainMenuComponent } from './core/menu/customer-main-menu/customer-main-menu.component';
 
 import { OrderListComponent } from './core/order-management-system/order-list/order-list.component';
 import { OrderCreateComponent } from './core/order-management-system/order-create/order-create.component';
 import { OrderCancelComponent } from './core/order-management-system/order-cancel/order-cancel.component';
+
+import { ProductMainMenuComponent } from './core/menu/product-main-menu/product-main-menu.component';
+import { CustomerMainMenuComponent } from './core/menu/customer-main-menu/customer-main-menu.component';
+
+import { CustomerProductListComponent } from './core/product-management-system/customer-product-list/customer-product-list.component';
+import { CustomerOrderListComponent } from './core/order-management-system/customer-order-list/customer-order-list.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
