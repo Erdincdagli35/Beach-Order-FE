@@ -7,25 +7,24 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { LoginComponent } from './features/auth/login/login.component';
-
+import { LoginComponent } from './core/models/auth/login/login.component';
 import { AuthService } from './core/services/auth.service';
 import { TokenService } from './core/services/token.service';
-import { AuthGuard } from './core/guards/auth.guard';
-import { AuthInterceptor } from './core/interceptors/auth.interceptor';
-import { ProductListComponent } from './features/core/product-management-system/product-list/product-list.component';
-import { ProductCreateComponent } from './features/core/product-management-system/product-create/product-create.component';
-import { ProductDeleteComponent } from './features/core/product-management-system/product-delete/product-delete.component';
-import { ProductEditComponent } from './features/core/product-management-system/product-edit/product-edit.component';
-import { ProductMainMenuComponent } from './features/core/product-management-system/product-main-menu/product-main-menu.component';
-import { OrderListComponent } from './features/core/order-management-system/order-list/order-list.component';
-import { RoomListComponent } from './features/core/product-management-system/room-list/room-list.component';
-import { CustomerProductListComponent } from './features/core/customer-product-list/customer-product-list.component';
-import { CustomerMainMenuComponent } from './features/core/customer-main-menu/customer-main-menu.component';
-import { CustomerOrderListComponent } from './features/core/customer-order-list/customer-order-list.component';
-import { OrderCreateComponent } from './features/core/order-management-system/order-create/order-create.component';
-import { OrderCancelComponent } from './features/core/order-management-system/order-cancel/order-cancel.component';
+import { AuthGuard } from './core/authentication-system-management/guards/auth.guard';
+import { AuthInterceptor } from './core/authentication-system-management/interceptors/auth.interceptor';
+
+import { ProductListComponent } from './core/product-management-system/product-list/product-list.component';
+import { ProductCreateComponent } from './core/product-management-system/product-create/product-create.component';
+import { ProductDeleteComponent } from './core/product-management-system/product-delete/product-delete.component';
+import { ProductEditComponent } from './core/product-management-system/product-edit/product-edit.component';
+import { ProductMainMenuComponent } from './core/menu/product-main-menu/product-main-menu.component';
+import { OrderListComponent } from './core/order-management-system/order-list/order-list.component';
+import { RoomListComponent } from './core/product-management-system/room-list/room-list.component';
+import { CustomerProductListComponent } from './core/product-management-system/customer-product-list/customer-product-list.component';
+import { CustomerMainMenuComponent } from './core/menu/customer-main-menu/customer-main-menu.component';
+import { CustomerOrderListComponent } from './core/order-management-system/customer-order-list/customer-order-list.component';
+import { OrderCreateComponent } from './core/order-management-system/order-create/order-create.component';
+import { OrderCancelComponent } from './core/order-management-system/order-cancel/order-cancel.component';
 
 
 @NgModule({
