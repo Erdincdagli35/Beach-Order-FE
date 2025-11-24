@@ -15,7 +15,7 @@ export class OrderListComponent {
 
     orders: Order[] = [];
     errorMessage = '';
-  
+
     // default category atamalısın (ör: Beer)
     newOrder: { id: number, status: string, total: number, createdAt:string, bills: Bill[]} = {
       status: '',
@@ -24,18 +24,18 @@ export class OrderListComponent {
       id: 0,
       bills: []
     };
-  
-  
+
+
     constructor(
       private os: OrdersService,
       private router: Router,
       public token: TokenService
     ) {}
-  
+
     ngOnInit(): void {
       this.loadOrders();
     }
-  
+
     loadOrders(): void {
       this.errorMessage = '';
       this.os.list().subscribe({
@@ -52,7 +52,7 @@ export class OrderListComponent {
   create(): void {
     this.router.navigate(['order-create']);
   }
-  
+
   cancel(id: number): void {
 
     this.os.cancel(id).subscribe({
@@ -67,7 +67,7 @@ export class OrderListComponent {
       next: () => { this.loadOrders(); },
     });
 
-    this.router.navigate(['product-main-menu']);
+    this.router.navigate(['admin-main-menu']);
   }
 
   delivered(id: number): void {
@@ -76,6 +76,6 @@ export class OrderListComponent {
       next: () => { this.loadOrders(); },
     });
 
-    this.router.navigate(['product-main-menu']);
+    this.router.navigate(['admin-main-menu']);
   }
 }

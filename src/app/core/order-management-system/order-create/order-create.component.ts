@@ -92,9 +92,8 @@ export class OrderCreateComponent implements OnInit {
     this.orderService.create(payload).subscribe({
       next: () => {
         this.submitting = false;
-        // başarılıysa sepeti temizle
         this.cartService.clear();
-        this.router.navigate(['product-main-menu']);
+        this.router.navigate(['admin-main-menu']);
       },
       error: err => {
         this.submitting = false;
@@ -102,9 +101,9 @@ export class OrderCreateComponent implements OnInit {
       }
     });
   }
-  
+
 
   cancel(): void {
-    this.router.navigate(['product-main-menu']);
+    this.router.navigate(['admin-main-menu']);
   }
 }

@@ -10,7 +10,7 @@ import { Product, Category} from '../../models/product/product';
   styleUrls: ['./product-delete.component.css']
 })
 export class ProductDeleteComponent {
-  
+
   product!: Product;
   products : Product[] = [];
 
@@ -37,6 +37,6 @@ export class ProductDeleteComponent {
     }
 
     goToProduct() {
-      this.router.navigate(['product-main-menu']);
+      this.router.navigate(['admin-main-menu']);
     }
 }

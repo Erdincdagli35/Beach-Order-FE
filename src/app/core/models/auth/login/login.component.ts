@@ -23,13 +23,13 @@ export class LoginComponent {
 
   get username(): AbstractControl | null { return this.form.get('username'); }
   get password(): AbstractControl | null { return this.form.get('password'); }
-  
+
   submit() {
   if (this.form.invalid) return;
 
   this.loading = true;
   this.error = null;
-  
+
   const { username, password } = this.form.value;
   this.auth.login(username, password).subscribe({
     next: () => {
@@ -37,7 +37,7 @@ export class LoginComponent {
       const roles = this.tokenService.getRoles();
 
       if (roles.includes('ROLE_ADMIN')) {
-        this.router.navigate(['/product-main-menu']);
+        this.router.navigate(['/admin-main-menu']);
       } else if (roles.includes('ROLE_CUSTOMER')) {
         this.router.navigate(['/customer-main-menu']);
       } else {

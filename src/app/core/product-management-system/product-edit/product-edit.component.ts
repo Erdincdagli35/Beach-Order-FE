@@ -67,12 +67,12 @@ export class ProductEditComponent implements OnInit{
       const vals = Object.values(Category).filter(v => typeof v === 'string') as string[];
       this.categories = vals;
     }
-  
+
     // template'te kullanmak için kısa getter'lar (template tipi hatalarını önler)
     get name() { return this.form.get('name'); }
     get price() { return this.form.get('price'); }
     get category() { return this.form.get('category'); }
-  
+
     toggleDropdown(): void {
       this.dropdownOpen = !this.dropdownOpen;
       if (!this.dropdownOpen) {
@@ -80,7 +80,7 @@ export class ProductEditComponent implements OnInit{
         this.filteredCategories = [...this.categories];
       }
     }
-  
+
     @HostListener('document:click', ['$event'])
     onDocumentClick(_: MouseEvent) {
       // dışarı tıklanınca kapat
@@ -90,7 +90,7 @@ export class ProductEditComponent implements OnInit{
         this.filteredCategories = [...this.categories];
       }
     }
-  
+
     selectCategory(category: string): void {
       this.form.get('category')?.setValue(category);
       this.dropdownOpen = false;
@@ -115,10 +115,10 @@ export class ProductEditComponent implements OnInit{
       }
     });
 
-    this.router.navigate(['product-main-menu']);
+    this.router.navigate(['admin-main-menu']);
   }
 
   cancel(): void {
-    this.router.navigate(['product-main-menu']);
+    this.router.navigate(['admin-main-menu']);
   }
 }

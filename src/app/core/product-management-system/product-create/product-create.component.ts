@@ -94,10 +94,10 @@ export class ProductCreateComponent implements OnInit{
       }
     });
 
-    this.router.navigate(['product-main-menu']);
+    this.router.navigate(['admin-main-menu']);
   }
 
   cancel(): void {
-    this.router.navigate(['product-main-menu']);
+    this.router.navigate(['admin-main-menu']);
   }
 }

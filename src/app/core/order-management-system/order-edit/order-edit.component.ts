@@ -15,7 +15,7 @@ export class OrderEditComponent {
     id!: number;
     loading = false;
     submitting = false;
-  
+
     constructor(
       private route: ActivatedRoute,
       private router: Router,
@@ -29,10 +29,10 @@ export class OrderEditComponent {
         category: ['']
       });
     }
-  
+
     ngOnInit(): void {
     }
-  
+
     submit(): void {
       if (this.form.invalid) {
         this.form.markAllAsTouched();
@@ -49,11 +49,11 @@ export class OrderEditComponent {
           alert('Güncelleme hatası: ' + (err.message || err));
         }
       });
-  
-      this.router.navigate(['product-main-menu']);
+
+      this.router.navigate(['admin-main-menu']);
     }
-  
+
     cancel(): void {
-      this.router.navigate(['product-main-menu']);
+      this.router.navigate(['admin-main-menu']);
     }
 }
