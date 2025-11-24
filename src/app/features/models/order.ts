@@ -1,7 +1,7 @@
 import { Bill } from "./bill";
 
 export interface Order {
-  id?: number;
+  id: number;
   status?: string;
   total?: number;
   createdAt?: string;

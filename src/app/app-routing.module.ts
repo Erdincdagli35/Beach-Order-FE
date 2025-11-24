@@ -15,9 +15,10 @@ import { CustomerMainMenuComponent } from './features/core/customer-main-menu/cu
 
 import { OrderListComponent } from './features/core/order-management-system/order-list/order-list.component';
 import { OrderCreateComponent } from './features/core/order-management-system/order-create/order-create.component';
+import { OrderCancelComponent } from './features/core/order-management-system/order-cancel/order-cancel.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'product-main-menu', pathMatch: 'full' },
   { path: 'product-main-menu', component: ProductMainMenuComponent},
   { path: 'product-list', component: ProductListComponent},
   { path: 'products/create', component: ProductCreateComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'customer-order-list', component: CustomerOrderListComponent},
   { path: 'order-list', component: OrderListComponent},
   { path: 'order-create', component: OrderCreateComponent},
+  { path: 'order-cancel', component: OrderCancelComponent},
   { path: 'login', component: LoginComponent }
 ];
 

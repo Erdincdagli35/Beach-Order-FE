@@ -51,4 +51,12 @@ export class OrderListComponent {
   create(): void {
     this.router.navigate(['order-create']);
   }
+  
+  cancel(id: number): void {
+
+    this.os.cancel(id).subscribe({
+      next: () => { this.loadOrders(); },
+      //error: err => { alert('Silme başarısız: ' + (err.message || err)); }
+    });
+  }
 }

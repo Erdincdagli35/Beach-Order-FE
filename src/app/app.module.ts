@@ -25,6 +25,7 @@ import { CustomerProductListComponent } from './features/core/customer-product-l
 import { CustomerMainMenuComponent } from './features/core/customer-main-menu/customer-main-menu.component';
 import { CustomerOrderListComponent } from './features/core/customer-order-list/customer-order-list.component';
 import { OrderCreateComponent } from './features/core/order-management-system/order-create/order-create.component';
+import { OrderCancelComponent } from './features/core/order-management-system/order-cancel/order-cancel.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { OrderCreateComponent } from './features/core/order-management-system/or
     CustomerMainMenuComponent,
     CustomerOrderListComponent,
     OrderCreateComponent,
+    OrderCancelComponent,
   ],
   imports: [
     BrowserModule,
