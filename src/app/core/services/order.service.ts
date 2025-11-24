@@ -23,7 +23,15 @@ export class OrdersService {
     return this.http.get<Order[]>(`${this.base}/api/orders/list`);
   }
 
+  listById(id: number): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.base}/api/orders/list/${id}`);
+  }
+
   cancel(id: number): Observable<void> {
     return this.http.delete<void>(`${this.base}/api/orders/cancel/${id}`);
+  }
+  
+  update(id: number, order: Order): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.base}/api/orders/edit/${id}`);
   }
 }
