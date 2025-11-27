@@ -14,5 +14,4 @@ export class RoomService {
   list(): Observable<Room[]> {
     return this.http.get<Room[]>(`${this.base}/rooms/list/all`);
   }
-
 }

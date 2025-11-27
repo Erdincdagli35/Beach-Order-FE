@@ -22,17 +22,17 @@ export class RoomListComponent {
     ) {}
 
     ngOnInit(): void {
-      this.loadOrders();
+      this.loadRoom();
     }
 
-    loadOrders(): void {
+    loadRoom(): void {
       this.errorMessage = '';
       this.rs.list().subscribe({
         next: (p) => {
           this.rooms = p || [];
         },
         error: (err) => {
-          console.error('Order list error', err);
+          console.error('Room list error', err);
           this.errorMessage = err?.error?.message || err.message || 'Liste yüklenirken hata oluştu.';
         }
       });
