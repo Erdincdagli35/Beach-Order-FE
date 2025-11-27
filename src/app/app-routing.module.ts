@@ -19,6 +19,7 @@ import { CustomerMainMenuComponent } from './core/menu/customer-main-menu/custom
 import { CustomerProductListComponent } from './core/product-management-system/customer-product-list/customer-product-list.component';
 import { CustomerOrderListComponent } from './core/order-management-system/customer-order-list/customer-order-list.component';
 
+import { RoomListComponent } from './core/room-management-system/room-list/room-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'order-list', component: OrderListComponent},
   { path: 'order-create', component: OrderCreateComponent},
   { path: 'order-cancel', component: OrderCancelComponent},
+  { path: 'room-list', component: RoomListComponent},
   { path: 'login', component: LoginComponent }
 ];
 

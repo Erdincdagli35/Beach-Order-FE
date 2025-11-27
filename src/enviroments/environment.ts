@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
   authUrl: 'http://localhost:8080',
-  productUrl: 'http://localhost:8081',
+  productUrl: 'http://localhost:8080',
   orderUrl: 'http://localhost:8080'
 };

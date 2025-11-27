@@ -19,13 +19,13 @@ import { ProductDeleteComponent } from './core/product-management-system/product
 import { ProductEditComponent } from './core/product-management-system/product-edit/product-edit.component';
 import { AdminMainMenuComponent } from './core/menu/admin-main-menu/admin-main-menu.component';
 import { OrderListComponent } from './core/order-management-system/order-list/order-list.component';
-import { RoomListComponent } from './core/product-management-system/room-list/room-list.component';
 import { CustomerProductListComponent } from './core/product-management-system/customer-product-list/customer-product-list.component';
 import { CustomerMainMenuComponent } from './core/menu/customer-main-menu/customer-main-menu.component';
 import { CustomerOrderListComponent } from './core/order-management-system/customer-order-list/customer-order-list.component';
 import { OrderCreateComponent } from './core/order-management-system/order-create/order-create.component';
 import { OrderCancelComponent } from './core/order-management-system/order-cancel/order-cancel.component';
 import { OrderEditComponent } from './core/order-management-system/order-edit/order-edit.component';
+import { RoomListComponent } from './core/room-management-system/room-list/room-list.component';
 
 
 @NgModule({
@@ -45,6 +45,7 @@ import { OrderEditComponent } from './core/order-management-system/order-edit/or
     OrderCreateComponent,
     OrderCancelComponent,
     OrderEditComponent,
+    RoomListComponent
   ],
   imports: [
     BrowserModule,
