@@ -12,7 +12,21 @@
          maxlength="11"
          pattern="[0-9]{11}" />
         <small class="error" *ngIf="form.get('personalId')?.touched && form.get('personalId')?.invalid">
-        Geçerli bir Personal ID giriniz.
+        Enter valid the Personal Id
+      </small>
+    </label>
+  </div>
+
+  <!-- Personal ID alanı: formArray dışında -->
+  <div class="item-body">
+    <label class="field">
+      <span class="label-text">Room No</span>
+      <input type="text" 
+         formControlName="roomNo" 
+         class="input" 
+         placeholder="Room No"  />
+        <small class="error" *ngIf="form.get('roomNo')?.touched && form.get('roomNo')?.invalid">
+        Enter valid the Room No
       </small>
     </label>
   </div>

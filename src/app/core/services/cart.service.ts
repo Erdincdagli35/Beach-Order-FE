@@ -9,6 +9,7 @@ const STORAGE_KEY = 'app_cart_v1';
 export class CartService {
   private items: Item[] = [];
   private personalId: string = '';
+  private roomNo : string ='';
 
   constructor() {
     this.load();
@@ -17,7 +18,8 @@ export class CartService {
   private save() {
     const data: OrderCreateRequest = {
       items: this.items,
-      personalId: this.personalId
+      personalId: this.personalId,
+      roomNo: this.roomNo
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   }
@@ -41,6 +43,15 @@ export class CartService {
 
   getPersonalId(): string {
     return this.personalId;
+  }
+
+  setRoomNo(roomNo: string) {
+    this.roomNo = roomNo;
+    this.save();
+  }
+
+  getRoomNo(): string {
+    return this.roomNo;
   }
 
   getItems(): Item[] {
@@ -77,13 +88,15 @@ export class CartService {
   clear() {
     this.items = [];
     this.personalId = '';
+    this.roomNo = '';
     this.save();
   }
 
   getOrderRequest(): OrderCreateRequest {
     return {
       items: [...this.items],
-      personalId: this.personalId
+      personalId: this.personalId,
+      roomNo: this.roomNo
     };
   }
 }

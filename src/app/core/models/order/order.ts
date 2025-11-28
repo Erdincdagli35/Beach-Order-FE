@@ -7,4 +7,5 @@ export interface Order {
   createdAt?: string;
   bills: Bill[];
   personalId: number;
+  roomNo: string;
 }

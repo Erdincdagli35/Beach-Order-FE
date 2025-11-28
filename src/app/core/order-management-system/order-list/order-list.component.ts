@@ -15,13 +15,14 @@ export class OrderListComponent {
     orders: Order[] = [];
     errorMessage = '';
 
-    newOrder: { id: number, status: string, total: number, createdAt:string, bills: Bill[], personalId: number} = {
+    newOrder: { id: number, status: string, total: number, createdAt:string, bills: Bill[], personalId: number, roomNo: string} = {
       status: '',
       total: 0,
       createdAt: '',
       id: 0,
       bills: [],
-      personalId: 0
+      personalId: 0,
+      roomNo: ''
     };
 
 

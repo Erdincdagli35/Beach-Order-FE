@@ -24,6 +24,7 @@ export class OrderCreateComponent implements OnInit {
     // Burada personelId kontrolü oluşturuldu (email yerine)
     this.form = this.fb.group({
       personalId: [this.cartService.getPersonalId() || ''],
+      roomNo: [this.cartService.getRoomNo() || ''],
       items: this.fb.array([], Validators.required)
     });
   }
@@ -55,6 +56,10 @@ export class OrderCreateComponent implements OnInit {
     // Eğer cart'ta kayıtlı personelId varsa form'a set et
     if (order?.personalId) {
       this.form.get('personalId')?.setValue(order.personalId);
+    }
+
+    if (order?.roomNo) {
+      this.form.get('roomNo')?.setValue(order.roomNo);
     }
   }
 
@@ -92,11 +97,14 @@ export class OrderCreateComponent implements OnInit {
 
   const payload = {
     personalId: this.form.value.personalId, // backend uyumlu
+    roomNo : this.form.value.roomNo,
     items: this.items.value
   };
 
   // CartService’e set et
   this.cartService.setPersonalId(payload.personalId);
+
+  this.cartService.setRoomNo(payload.roomNo);
 
   this.orderService.create(payload).subscribe({
     next: () => {
