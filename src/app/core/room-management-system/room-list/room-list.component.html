@@ -11,19 +11,23 @@
   </div>
 
   <!-- Sipariş Listesi -->
-  <div *ngIf="rooms?.length; ">
+  <div *ngIf="roomResponseByOrder?.length; ">
     <table class="table table-striped table-hover">
       <thead>
         <tr>
           <th>Room No</th>
           <th>Descprition</th>
+          <th>Order Count</th>
+          <th>Total Revenue</th>
         </tr>
       </thead>
 
       <tbody>
-      <tr *ngFor="let r of rooms">
+      <tr *ngFor="let r of roomResponseByOrder">
         <td>{{ r.roomNo }}</td>
         <td>{{ r.description }}</td>
+        <td>{{ r.orderCount }}</td>
+        <td>{{ r.totalRevenue }}</td>
       </tr>
     </tbody>
 

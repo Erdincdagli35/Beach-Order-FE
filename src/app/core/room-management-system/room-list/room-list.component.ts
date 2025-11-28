@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { OrdersService } from '../../services/order.service';
 import { TokenService } from 'src/app/core/services/token.service';
 import { Router } from '@angular/router';
 import { Room } from '../../models/room';
 import { RoomService } from '../../services/room.service';
+import { OrdersService } from '../../services/order.service';
+import { OrderByRoomResponse } from '../../models/order/order-by-room-response';
 
 @Component({
   selector: 'app-room-list',
@@ -12,11 +13,11 @@ import { RoomService } from '../../services/room.service';
 })
 export class RoomListComponent {
 
-  rooms: Room[] = [];
+  roomResponseByOrder: OrderByRoomResponse[] = [];
     errorMessage = '';
 
     constructor(
-      private rs: RoomService,
+      private os: OrdersService,
       private router: Router,
       public token: TokenService
     ) {}
@@ -27,9 +28,9 @@ export class RoomListComponent {
 
     loadRoom(): void {
       this.errorMessage = '';
-      this.rs.list().subscribe({
+      this.os.listByRoomNo().subscribe({
         next: (p) => {
-          this.rooms = p || [];
+          this.roomResponseByOrder = p || [];
         },
         error: (err) => {
           console.error('Room list error', err);

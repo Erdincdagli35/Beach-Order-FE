@@ -5,6 +5,7 @@ import { environment } from '../../../enviroments/environment';
 import { environment as envProd } from '../../../enviroments/enviroment.prod';
 import { Observable } from 'rxjs';
 import { OrderCreateRequest } from '../models/order/order-crate-request';
+import { OrderByRoomResponse } from '../models/order/order-by-room-response';
 
 @Injectable({ providedIn: 'root' })
 export class OrdersService {
@@ -42,5 +43,9 @@ export class OrdersService {
 
   delivered(id: number): Observable<Order> {
     return this.http.put<Order>(`${this.base}/api/orders/delivered/${id}`,id);
+  }
+
+  listByRoomNo(): Observable<OrderByRoomResponse[]> {
+    return this.http.get<OrderByRoomResponse[]>(`${this.base}/api/orders/list/room`);
   }
 }
