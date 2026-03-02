@@ -4,15 +4,15 @@
   <!-- Personal ID alanı: formArray dışında -->
   <div class="item-body">
     <label class="field">
-      <span class="label-text">Personal ID</span>
+      <span class="label-text">Personal Name</span>
       <input type="text" 
-         formControlName="personalId" 
+         formControlName="personalName" 
          class="input" 
-         placeholder="Personal ID" 
+         placeholder="Personal Name" 
          maxlength="11"
          pattern="[0-9]{11}" />
-        <small class="error" *ngIf="form.get('personalId')?.touched && form.get('personalId')?.invalid">
-        Enter valid the Personal Id
+        <small class="error" *ngIf="form.get('personalName')?.touched && form.get('personalId')?.invalid">
+        Enter valid the Personal Name
       </small>
     </label>
   </div>

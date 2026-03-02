@@ -8,7 +8,7 @@ const STORAGE_KEY = 'app_cart_v1';
 @Injectable({ providedIn: 'root' })
 export class CartService {
   private items: Item[] = [];
-  private personalId: string = '';
+  private personalName: string = '';
   private roomNo : string ='';
 
   constructor() {
@@ -18,7 +18,7 @@ export class CartService {
   private save() {
     const data: OrderCreateRequest = {
       items: this.items,
-      personalId: this.personalId,
+      personalName: this.personalName,
       roomNo: this.roomNo
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -29,20 +29,20 @@ export class CartService {
     if (raw) {
       const data: OrderCreateRequest = JSON.parse(raw);
       this.items = data.items || [];
-      this.personalId = data.personalId || '';
+      this.personalName = data.personalName || '';
     } else {
       this.items = [];
-      this.personalId = '';
+      this.personalName = '';
     }
   }
 
-  setPersonalId(personalId: string) {
-    this.personalId = personalId;
+  setPersonalName(personalName: string) {
+    this.personalName = personalName;
     this.save();
   }
 
-  getPersonalId(): string {
-    return this.personalId;
+  getPersonalName(): string {
+    return this.personalName;
   }
 
   setRoomNo(roomNo: string) {
@@ -87,7 +87,7 @@ export class CartService {
 
   clear() {
     this.items = [];
-    this.personalId = '';
+    this.personalName = '';
     this.roomNo = '';
     this.save();
   }
@@ -95,7 +95,7 @@ export class CartService {
   getOrderRequest(): OrderCreateRequest {
     return {
       items: [...this.items],
-      personalId: this.personalId,
+      personalName: this.personalName,
       roomNo: this.roomNo
     };
   }
