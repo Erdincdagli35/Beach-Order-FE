@@ -8,10 +8,8 @@
       <input type="text" 
          formControlName="personalName" 
          class="input" 
-         placeholder="Personal Name" 
-         maxlength="11"
-         pattern="[0-9]{11}" />
-        <small class="error" *ngIf="form.get('personalName')?.touched && form.get('personalId')?.invalid">
+         placeholder="Personal Name" />
+        <small class="error" *ngIf="form.get('personalName')?.touched && form.get('personalName')?.invalid">
         Enter valid the Personal Name
       </small>
     </label>
