@@ -19,13 +19,16 @@
   <div class="item-body">
     <label class="field">
       <span class="label-text">Room No</span>
-      <input type="text" 
-         formControlName="roomNo" 
-         class="input" 
-         placeholder="Room No"  />
-        <small class="error" *ngIf="form.get('roomNo')?.touched && form.get('roomNo')?.invalid">
-        Enter valid the Room No
-      </small>
+      <input 
+      type="text"
+      formControlName="roomNo"
+      class="input"
+      placeholder="Room No (1-13, Loft1-Loft6)" />
+
+    <small class="error" 
+      *ngIf="form.get('roomNo')?.touched && form.get('roomNo')?.invalid">
+      Room No must be 1-13 or Loft1–Loft6
+    </small>
     </label>
   </div>
 

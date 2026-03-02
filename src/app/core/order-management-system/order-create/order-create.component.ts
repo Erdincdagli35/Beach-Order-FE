@@ -24,7 +24,10 @@ export class OrderCreateComponent implements OnInit {
     // Burada personelId kontrolü oluşturuldu (email yerine)
     this.form = this.fb.group({
       personalName: [this.cartService.getPersonalName() || ''],
-      roomNo: [this.cartService.getRoomNo() || ''],
+      roomNo: ['', [
+    Validators.required,
+    Validators.pattern(/^(?:[1-9]|1[0-3]|Loft[1-6])$/)
+    ]],
       items: this.fb.array([], Validators.required)
     });
   }
