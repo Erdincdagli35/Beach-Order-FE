@@ -48,4 +48,8 @@ export class OrdersService {
   listByRoomNo(): Observable<OrderByRoomResponse[]> {
     return this.http.get<OrderByRoomResponse[]>(`${this.base}/api/orders/list/room`);
   }
+
+  customerOrderList(): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.base}/api/orders/list/will/deliver/`);
+  }
 }
