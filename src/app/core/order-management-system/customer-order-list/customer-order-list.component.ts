@@ -38,7 +38,7 @@ export class CustomerOrderListComponent {
   
       loadOrders(): void {
         this.errorMessage = '';
-        this.os.list().subscribe({
+        this.os.customerOrderList().subscribe({
           next: (p) => {
             this.orders = p || [];
           },
