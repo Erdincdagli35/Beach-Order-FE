@@ -4,11 +4,11 @@
   <!-- Personal ID alanı: formArray dışında -->
   <div class="item-body">
     <label class="field">
-      <span class="label-text">Personal Name</span>
+      <span class="label-text">Persona Name</span>
       <input type="text" 
          formControlName="personalName" 
          class="input" 
-         placeholder="Personal Name" />
+         placeholder="Personal Name"  />
         <small class="error" *ngIf="form.get('personalName')?.touched && form.get('personalName')?.invalid">
         Enter valid the Personal Name
       </small>
