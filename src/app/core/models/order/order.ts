@@ -6,6 +6,6 @@ export interface Order {
   total?: number;
   createdAt?: string;
   bills: Bill[];
-  personalId: number;
+  personalName: string;
   roomNo: string;
 }
