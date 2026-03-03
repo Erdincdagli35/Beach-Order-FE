@@ -4,13 +4,13 @@
   <!-- Personal ID alanı: formArray dışında -->
   <div class="item-body">
     <label class="field">
-      <span class="label-text">Persona Name</span>
+      <span class="label-text">Müşteri İsmi</span>
       <input type="text" 
          formControlName="personalName" 
          class="input" 
          placeholder="Personal Name"  />
         <small class="error" *ngIf="form.get('personalName')?.touched && form.get('personalName')?.invalid">
-        Enter valid the Personal Name
+        Geçerli Müşteri ismi giriniz
       </small>
     </label>
   </div>
@@ -18,7 +18,7 @@
   <!-- Personal ID alanı: formArray dışında -->
   <div class="item-body">
     <label class="field">
-      <span class="label-text">Room No</span>
+      <span class="label-text">Oda No</span>
       <input 
       type="text"
       formControlName="roomNo"
@@ -27,7 +27,7 @@
 
     <small class="error" 
       *ngIf="form.get('roomNo')?.touched && form.get('roomNo')?.invalid">
-      Room No must be 1-13 or Loft1–Loft6
+      Oda No 1-13 yada Loft1–Loft6 şeklinde girilmeli
     </small>
     </label>
   </div>
@@ -48,12 +48,12 @@
 
       <div class="item-body">
         <label class="field">
-          <span class="label-text">Product Name</span>
+          <span class="label-text">Ürün Adı</span>
           <span class="input readonly">{{ getItemControl(i, 'productName')?.value }}</span>
         </label>
 
         <label class="field">
-          <span class="label-text">Quantity</span>
+          <span class="label-text">Adet</span>
           <input type="number" formControlName="qty" class="input" min="1" />
           <small class="error" *ngIf="getItemControl(i, 'qty')?.touched && getItemControl(i, 'qty')?.invalid">
             Adet en az 1 olmalı.

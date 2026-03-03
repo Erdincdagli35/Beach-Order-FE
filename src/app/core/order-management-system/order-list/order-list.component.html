@@ -3,7 +3,7 @@
 
   <!-- Başlık + Hata Mesajı -->
   <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Order List</h2>
+    <h2>Sipariş Listesi</h2>
   </div>
 
   <div *ngIf="errorMessage" class="alert alert-danger">
@@ -16,13 +16,13 @@
       <thead>
         <tr>
           <th>ID</th>
-          <th>Status</th>
-          <th>Total</th>
-          <th>Created At</th>
-          <th>Personel Name</th>
-          <th>Room No</th>
-          <th>Bills (Piece / Product Number)</th>
-          <th>Actions</th>
+          <th>Durum</th>
+          <th>Toplam</th>
+          <th>Sipariş Tarihi</th>
+          <th>Personel Adı</th>
+          <th>Oda No</th>
+          <th>Adisyon (Adet / Ürün Adı)</th>
+          <th>Aksiyonlar</th>
         </tr>
       </thead>
 
@@ -46,9 +46,9 @@
 
         <!-- Aksiyon butonları -->
         <td class="d-flex gap-1">
-          <button class="btn btn-primary create-btn" (click)="willDeliver(o.id)">Will Deliver</button>
-          <button class="btn btn-primary create-btn" (click)="delivered(o.id)">Delivered</button>
-          <button class="btn btn-primary create-btn" (click)="cancel(o.id)">Cancel</button>
+          <button class="btn btn-primary create-btn" (click)="willDeliver(o.id)">Hazırlanıyor</button>
+          <button class="btn btn-primary create-btn" (click)="delivered(o.id)">Teslim Edildi</button>
+          <button class="btn btn-primary create-btn" (click)="cancel(o.id)">İptal</button>
         </td>
       </tr>
     </tbody>
