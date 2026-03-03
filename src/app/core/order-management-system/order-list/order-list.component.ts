@@ -14,6 +14,7 @@ export class OrderListComponent {
 
     orders: Order[] = [];
     errorMessage = '';
+    roomFilter: string = '';
 
     newOrder: { id: number, status: string, total: number, createdAt:string, bills: Bill[], personalId: number, roomNo: string} = {
       status: '',
