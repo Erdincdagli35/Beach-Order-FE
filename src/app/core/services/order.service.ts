@@ -21,9 +21,16 @@ export class OrdersService {
     return this.http.get<Order[]>(`${this.base}/api/orders`);
   }
 
-  list(): Observable<Order[]> {
-    return this.http.get<Order[]>(`${this.base}/api/orders/list`);
+  list(roomNo?: string): Observable<Order[]> {
+
+  let url = `${this.base}/api/orders/list`;
+
+  if (roomNo) {
+    url += `?roomNo=${roomNo}`;
   }
+
+  return this.http.get<Order[]>(url);
+}
 
   listById(id: number): Observable<Order[]> {
     return this.http.get<Order[]>(`${this.base}/api/orders/list/${id}`);

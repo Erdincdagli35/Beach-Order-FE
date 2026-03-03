@@ -1,11 +1,36 @@
-
 <div class="container p-3">
 
-  <!-- Başlık + Hata Mesajı -->
+  <!-- Başlık -->
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>Sipariş Listesi</h2>
   </div>
 
+  <!-- Oda No Filtre -->
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Oda No ile filtrele"
+        [(ngModel)]="roomFilter">
+    </div>
+
+    <div class="col-md-4 d-flex gap-2">
+      <button
+        class="btn btn-secondary"
+        (click)="loadOrders(roomFilter)">
+        Filtrele
+      </button>
+
+      <button
+        class="btn btn-outline-secondary"
+        (click)="loadOrders()">
+        Temizle
+      </button>
+    </div>
+  </div>
+
+  <!-- Hata Mesajı -->
   <div *ngIf="errorMessage" class="alert alert-danger">
     {{ errorMessage }}
   </div>
@@ -27,37 +52,54 @@
       </thead>
 
       <tbody>
-      <tr *ngFor="let o of orders">
-        <td>{{ o.id }}</td>
-        <td>{{ o.status }}</td>
-        <td>{{ o.total }} TL</td>
-        <td>{{ o.createdAt | date:'short' }}</td>
-        <td>{{ o.personalName }}</td>
-        <td>{{ o.roomNo }}</td>
-        <!-- Bills alanı -->
-        <td>
-          <ul class="mb-0 ps-3">
-            <li *ngFor="let b of o.bills">
-              <span>Adet: {{ b.piece }}</span> |
-              <span>Ürün Adı: {{ b.productName }}</span>
-            </li>
-          </ul>
-        </td>
+        <tr *ngFor="let o of orders">
+          <td>{{ o.id }}</td>
+          <td>{{ o.status }}</td>
+          <td>{{ o.total }} TL</td>
+          <td>{{ o.createdAt | date:'short' }}</td>
+          <td>{{ o.personalName }}</td>
+          <td>{{ o.roomNo }}</td>
 
-        <!-- Aksiyon butonları -->
-        <td class="d-flex gap-1">
-          <button class="btn btn-primary create-btn" (click)="willDeliver(o.id)">Sipraişi Yolla</button>
-          <button class="btn btn-primary create-btn" (click)="delivered(o.id)">Teslim Edildi</button>
-          <button class="btn btn-primary create-btn" (click)="cancel(o.id)">İptal</button>
-        </td>
-      </tr>
-    </tbody>
+          <!-- Bills -->
+          <td>
+            <ul class="mb-0 ps-3">
+              <li *ngFor="let b of o.bills">
+                <span>Adet: {{ b.piece }}</span> |
+                <span>Ürün Adı: {{ b.productName }}</span>
+              </li>
+            </ul>
+          </td>
 
+          <!-- Aksiyon Butonları -->
+          <td class="d-flex gap-1">
+            <button
+              class="btn btn-primary btn-sm"
+              (click)="willDeliver(o.id)">
+              Siparişi Yolla
+            </button>
+
+            <button
+              class="btn btn-success btn-sm"
+              (click)="delivered(o.id)">
+              Teslim Edildi
+            </button>
+
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="cancel(o.id)">
+              İptal
+            </button>
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
 
+  <!-- Boş Liste -->
   <ng-template #emptyBlock>
-    <div class="alert alert-info">Henüz sipariş yok.</div>
+    <div class="alert alert-info">
+      Henüz sipariş yok.
+    </div>
   </ng-template>
 
 </div>

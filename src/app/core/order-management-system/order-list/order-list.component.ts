@@ -36,18 +36,21 @@ export class OrderListComponent {
       this.loadOrders();
     }
 
-    loadOrders(): void {
-      this.errorMessage = '';
-      this.os.list().subscribe({
-        next: (p) => {
-          this.orders = p || [];
-        },
-        error: (err) => {
-          console.error('Order list error', err);
-          this.errorMessage = err?.error?.message || err.message || 'Liste yüklenirken hata oluştu.';
-        }
-      });
-    }
+    loadOrders(roomNo?: string): void {
+
+    this.errorMessage = '';
+
+    this.os.list(roomNo).subscribe({
+      next: (p) => {
+        this.orders = p || [];
+      },
+      error: (err) => {
+        console.error('Order list error', err);
+        this.errorMessage =
+          err?.error?.message || err.message || 'Liste yüklenirken hata oluştu.';
+      }
+    });
+  }
 
   create(): void {
     this.router.navigate(['order-create']);
