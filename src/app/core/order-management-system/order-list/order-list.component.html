@@ -70,25 +70,11 @@
             </ul>
           </td>
 
-          <!-- Aksiyon Butonları -->
+          <!-- Aksiyon butonları -->
           <td class="d-flex gap-1">
-            <button
-              class="btn btn-primary btn-sm"
-              (click)="willDeliver(o.id)">
-              Siparişi Yolla
-            </button>
-
-            <button
-              class="btn btn-success btn-sm"
-              (click)="delivered(o.id)">
-              Teslim Edildi
-            </button>
-
-            <button
-              class="btn btn-danger btn-sm"
-              (click)="cancel(o.id)">
-              İptal
-            </button>
+            <button class="btn btn-primary create-btn" (click)="willDeliver(o.id)">Sipraişi Yolla</button>
+            <button class="btn btn-primary create-btn" (click)="delivered(o.id)">Teslim Edildi</button>
+            <button class="btn btn-primary create-btn" (click)="cancel(o.id)">İptal</button>
           </td>
         </tr>
       </tbody>
