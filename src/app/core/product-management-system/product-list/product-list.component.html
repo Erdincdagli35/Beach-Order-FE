@@ -1,6 +1,6 @@
 <div class="container product-page">
 
-  <h3 class="mb-3 fw-bold text-primary">Product List</h3>
+  <h3 class="mb-3 fw-bold text-primary">Ürün Listesi</h3>
   <!-- Kategori Tab Bar -->
   <div class="category-tabs mb-4" *ngIf="categories?.length">
     <button
@@ -32,7 +32,7 @@
     <form #productForm="ngForm" novalidate>
       <div class="row g-3">
         <div class="col-md-4">
-          <input class="form-control" name="name" placeholder="Product Name" required
+          <input class="form-control" name="name" placeholder="Ürün Adı" required
                  [(ngModel)]="newProduct.name" #nameCtrl="ngModel" />
         </div>
         <div class="col-md-4">
@@ -40,7 +40,7 @@
                  placeholder="Fiyat" required [(ngModel)]="newProduct.price" />
         </div>
         <div class="col-md-4">
-          <input class="form-control" name="description" placeholder="Description" required
+          <input class="form-control" name="description" placeholder="Açıklama" required
                  [(ngModel)]="newProduct.description"/>
         </div>
         <div class="col-md-3">
@@ -49,7 +49,7 @@
           </select>
         </div>
         <div class="col-md-1">
-          <button class="btn btn-success w-100" type="submit" [disabled]="productForm.invalid">Submit</button>
+          <button class="btn btn-success w-100" type="submit" [disabled]="productForm.invalid">Gönder</button>
         </div>
       </div>
     </form>
@@ -64,8 +64,8 @@
         <label class="mb-1">{{ p.description }}</label>
 
         <div class="d-flex justify-content-end gap-2">
-          <button class="btn btn-outline-primary btn-sm"  (click)="onEdit(p.id)">Edit</button>
-          <button class="btn btn-outline-danger btn-sm"  (click)="onDelete(p.id)">Delete</button>
+          <button class="btn btn-outline-primary btn-sm"  (click)="onEdit(p.id)">Güncelle</button>
+          <button class="btn btn-outline-danger btn-sm"  (click)="onDelete(p.id)">Sil</button>
        </div>
       </div>
     </div>
@@ -73,7 +73,7 @@
 
   <div *ngIf="selectedCategory && (!groupedProducts[selectedCategory] || !groupedProducts[selectedCategory].length)"
        class="text-muted text-center mt-5">
-    None product find by this category
+    Bu kategoride ürün bulunamadı
   </div>
 
 </div>

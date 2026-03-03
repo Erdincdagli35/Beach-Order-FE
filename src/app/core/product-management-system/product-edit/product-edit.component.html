@@ -1,11 +1,11 @@
 <div class="container">
-  <h3>Product Edit</h3>
+  <h3>Ürün Güncelle</h3>
 
-  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="loading">Yükleniyor...</div>
 
   <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="submit()">
     <div class="mb-3">
-      <label class="form-label">Name</label>
+      <label class="form-label">Adı</label>
       <input formControlName="name" class="form-control" />
       <div *ngIf="form.get('name')?.touched && form.get('name')?.invalid" class="text-danger">
         Mandatory name
@@ -14,7 +14,7 @@
 
     <div class="col-md-3">
       <div class="dropdown w-100">
-        <label class="form-label">Category</label>
+        <label class="form-label">Kategori</label>
         <button class="btn btn-outline-primary w-100 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           {{ category?.value || 'Kategori Seç' }}
         </button>
@@ -27,19 +27,19 @@
     </div>
 
     <div class="mb-3">
-      <label class="form-label">Price</label>
+      <label class="form-label">Fiyat</label>
       <input type="number" formControlName="price" class="form-control" />
       <div *ngIf="form.get('price')?.touched && form.get('price')?.invalid" class="text-danger">
-        Enter valid price
+        Doğru karakter gir
       </div>
     </div>
 
     <div class="mb-3">
-      <label class="form-label">Description</label>
+      <label class="form-label">Açıklama</label>
       <textarea formControlName="description" class="form-control"></textarea>
     </div>
 
-    <a class="btn btn-link" (click)="submit()">Edit</a>
-    <a class="btn btn-link" (click)="cancel()">Cancel</a>
+    <a class="btn btn-link" (click)="submit()">Güncelle</a>
+    <a class="btn btn-link" (click)="cancel()">İptal</a>
   </form>
 </div>
