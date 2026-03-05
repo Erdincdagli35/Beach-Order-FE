@@ -26,6 +26,8 @@ import { OrderCreateComponent } from './core/order-management-system/order-creat
 import { OrderCancelComponent } from './core/order-management-system/order-cancel/order-cancel.component';
 import { OrderEditComponent } from './core/order-management-system/order-edit/order-edit.component';
 import { RoomListComponent } from './core/room-management-system/room-list/room-list.component';
+import { CustomerMainMenuComponent } from './core/menu/customer-main-menu/customer-main-menu.component';
+import { CustomerProductListComponent } from './core/product-management-system/customer-product-list/customer-product-list.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { RoomListComponent } from './core/room-management-system/room-list/room-
     OrderCreateComponent,
     OrderCancelComponent,
     OrderEditComponent,
-    RoomListComponent
+    RoomListComponent,
+    CustomerMainMenuComponent,
+    CustomerProductListComponent
   ],
   imports: [
     BrowserModule,
