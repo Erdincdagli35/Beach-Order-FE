@@ -14,10 +14,10 @@ import { OrderCreateComponent } from './core/order-management-system/order-creat
 import { OrderCancelComponent } from './core/order-management-system/order-cancel/order-cancel.component' ;
 
 import { AdminMainMenuComponent } from './core/menu/admin-main-menu/admin-main-menu.component';
-import { CustomerMainMenuComponent } from './core/menu/customer-main-menu/customer-main-menu.component';
+import { WaiterMainMenuComponent } from './core/menu/waiter-main-menu/waiter-main-menu.component';
 
-import { CustomerProductListComponent } from './core/product-management-system/customer-product-list/customer-product-list.component';
-import { CustomerOrderListComponent } from './core/order-management-system/customer-order-list/customer-order-list.component';
+import { WaiterProductListComponent } from './core/product-management-system/waiter-product-list/waiter-product-list.component';
+import { WaiterOrderListComponent } from './core/order-management-system/waiter-order-list/waiter-order-list.component';
 
 import { RoomListComponent } from './core/room-management-system/room-list/room-list.component';
 
@@ -28,9 +28,9 @@ const routes: Routes = [
   { path: 'products/create', component: ProductCreateComponent },
   { path: 'products/edit/:id', component: ProductEditComponent },
   { path: 'products/delete/:id', component: ProductDeleteComponent },
-  { path: 'customer-main-menu', component: CustomerMainMenuComponent},
-  { path: 'customer-product-list', component: CustomerProductListComponent},
-  { path: 'customer-order-list', component: CustomerOrderListComponent},
+  { path: 'waiter-main-menu', component: WaiterMainMenuComponent},
+  { path: 'waiter-product-list', component: WaiterProductListComponent},
+  { path: 'waiter-order-list', component: WaiterOrderListComponent},
   { path: 'order-list', component: OrderListComponent},
   { path: 'order-create', component: OrderCreateComponent},
   { path: 'order-cancel', component: OrderCancelComponent},
