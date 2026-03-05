@@ -40,7 +40,9 @@ export class LoginComponent {
         this.router.navigate(['/admin-main-menu']);
       } else if (roles.includes('ROLE_CUSTOMER')) {
         this.router.navigate(['/customer-main-menu']);
-      } else {
+      } else if (roles.includes('ROLE_WAITER')) {
+        this.router.navigate(['/waiter-main-menu']);
+      }else {
         this.error = "Yetki bulunamadı.";
       }
     },
