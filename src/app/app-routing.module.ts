@@ -15,11 +15,14 @@ import { OrderCancelComponent } from './core/order-management-system/order-cance
 
 import { AdminMainMenuComponent } from './core/menu/admin-main-menu/admin-main-menu.component';
 import { WaiterMainMenuComponent } from './core/menu/waiter-main-menu/waiter-main-menu.component';
+import { CustomerMainMenuComponent } from './core/menu/customer-main-menu/customer-main-menu.component';
 
 import { WaiterProductListComponent } from './core/product-management-system/waiter-product-list/waiter-product-list.component';
 import { WaiterOrderListComponent } from './core/order-management-system/waiter-order-list/waiter-order-list.component';
 
 import { RoomListComponent } from './core/room-management-system/room-list/room-list.component';
+import { CustomerProductListComponent } from './core/product-management-system/customer-product-list/customer-product-list.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -31,6 +34,8 @@ const routes: Routes = [
   { path: 'waiter-main-menu', component: WaiterMainMenuComponent},
   { path: 'waiter-product-list', component: WaiterProductListComponent},
   { path: 'waiter-order-list', component: WaiterOrderListComponent},
+  { path: 'customer-main-menu', component: CustomerMainMenuComponent},
+  { path: 'customer-product-list', component: CustomerProductListComponent},
   { path: 'order-list', component: OrderListComponent},
   { path: 'order-create', component: OrderCreateComponent},
   { path: 'order-cancel', component: OrderCancelComponent},
