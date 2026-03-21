@@ -10,6 +10,7 @@ export enum Category {
   Meal = 'Meal',
   Snack = 'Snack',
   Burger = 'Burger',
+  Pasta = "Pasta",
 
   Coffee = 'Coffee',
   HotDrink = 'HotDrink',
