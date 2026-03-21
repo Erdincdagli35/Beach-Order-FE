@@ -113,7 +113,7 @@ export class OrderCreateComponent implements OnInit {
     next: () => {
       this.submitting = false;
       this.cartService.clear();
-      this.router.navigate(['customer-main-menu']);
+      this.router.navigate(['waiter-main-menu']);
     },
     error: err => {
       this.submitting = false;
@@ -123,6 +123,6 @@ export class OrderCreateComponent implements OnInit {
 }
 
   cancel(): void {
-    this.router.navigate(['customer-main-menu']);
+    this.router.navigate(['waiter-main-menu']);
   }
 }
