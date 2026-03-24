@@ -5,12 +5,15 @@ export enum Category {
   Raki = 'Raki',
   Wine = 'Wine',
   Whiskey = 'Whiskey',
-  Votka = 'Votka',
+  Vodka = 'Vodka',
 
   Meal = 'Meal',
   Snack = 'Snack',
   Burger = 'Burger',
   Pasta = "Pasta",
+  Salad = "Salad",
+  Appetizer = "Appetizer",
+  Fruit = "Fruit",
 
   Coffee = 'Coffee',
   HotDrink = 'HotDrink',
