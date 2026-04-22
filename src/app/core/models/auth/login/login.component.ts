@@ -37,11 +37,17 @@ export class LoginComponent {
       const roles = this.tokenService.getRoles();
 
       if (roles.includes('ROLE_ADMIN')) {
-        this.router.navigate(['/admin-main-menu']);
+          this.router.navigate(['/admin-main-menu']).then(() => {
+            window.location.reload();
+          });
       } else if (roles.includes('ROLE_CUSTOMER')) {
-        this.router.navigate(['/customer-main-menu']);
+        this.router.navigate(['/customer-main-menu']).then(() => {
+            window.location.reload();
+          });
       } else if (roles.includes('ROLE_WAITER')) {
-        this.router.navigate(['/waiter-main-menu']);
+        this.router.navigate(['/waiter-main-menu']).then(() => {
+            window.location.reload();
+          });
       }else {
         this.error = "Yetki bulunamadı.";
       }

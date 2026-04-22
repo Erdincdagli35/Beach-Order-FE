@@ -82,8 +82,8 @@ export class ProductListComponent implements OnInit {
 
   onEdit(id?: number): void {
       console.log("go to update before : id : " + id);
-      this.router.navigate(['/products/edit', id]);
-      console.log("go to update after");
+  this.router.navigate(['/products/edit', id]);
+  console.log("go to update after");
   }
 
 
