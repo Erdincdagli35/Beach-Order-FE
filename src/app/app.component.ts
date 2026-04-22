@@ -15,6 +15,8 @@ export class AppComponent {
 constructor(public auth: AuthService, public token: TokenService, private router: Router) {}
   logout() {
     this.auth.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login']).then(() => {
+            window.location.reload();
+          });
   }
 }
