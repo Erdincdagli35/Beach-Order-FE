@@ -1,79 +1,62 @@
-<div class="container product-page">
+<div class="menu-container">
 
-  <h3 class="mb-3 fw-bold text-primary">Ürün Listesi</h3>
-  <!-- Kategori Tab Bar -->
-  <div class="category-tabs mb-4" *ngIf="categories?.length">
-    <button
+  <div class="logo-wrapper">
+    <img src="assets/logo.svg" alt="Logo" />
+  </div>
+
+  <h1 class="menu-title">Ürün Menüsü</h1>
+
+  <!-- CATEGORY -->
+  <nav class="category-nav" *ngIf="categories?.length">
+    <button 
       *ngFor="let c of categories"
-      class="category-tab"
+      (click)="selectedCategory = c"
       [class.active]="selectedCategory === c"
-      (click)="selectedCategory = c">
+    >
       {{ c }}
     </button>
-  </div>
 
-  <!-- Admin: Yeni Ürün Ekle -->
-   <div class="action-buttons d-flex justify-content-end gap-2">
-    <button class="btn btn-primary" (click)="onCreate()">
-      <span class="btn-icon" aria-hidden="true">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-      </span>
-      <span class="btn-text">{{ showCreateForm ? 'Cancel' : 'New Product Add' }}</span>
+    <!-- ADMIN CREATE -->
+  <div class="action-cta">
+    <button class="btn-create" (click)="onCreate()">
+      {{ showCreateForm ? 'İptal' : 'Ürün Ekle' }}
     </button>
   </div>
+  
+  </nav>
 
+  <!-- TABLE -->
+  <div class="table-wrapper" *ngIf="selectedCategory">
 
-  <!-- Create Form -->
-  <div *ngIf="showCreateForm && token.hasRole('ROLE_ADMIN')" class="product-form card p-3 shadow-sm mb-4">
-    <form #productForm="ngForm" novalidate>
-      <div class="row g-3">
-        <div class="col-md-4">
-          <input class="form-control" name="name" placeholder="Ürün Adı" required
-                 [(ngModel)]="newProduct.name" #nameCtrl="ngModel" />
-        </div>
-        <div class="col-md-4">
-          <input class="form-control" name="price" type="number" min="0" step="0.01"
-                 placeholder="Fiyat" required [(ngModel)]="newProduct.price" />
-        </div>
-        <div class="col-md-4">
-          <input class="form-control" name="description" placeholder="Açıklama" required
-                 [(ngModel)]="newProduct.description"/>
-        </div>
-        <div class="col-md-3">
-          <select class="form-select" name="category" required [(ngModel)]="newProduct.category">
-            <option *ngFor="let c of categories" [ngValue]="c">{{ c }}</option>
-          </select>
-        </div>
-        <div class="col-md-1">
-          <button class="btn btn-success w-100" type="submit" [disabled]="productForm.invalid">Gönder</button>
-        </div>
-      </div>
-    </form>
-  </div>
+    <table>
+      <tbody>
+        <tr *ngFor="let p of groupedProducts[selectedCategory]">
 
-  <!-- Ürün Listesi -->
-  <div *ngIf="selectedCategory && groupedProducts[selectedCategory]?.length" class="row g-3">
-    <div class="col-md-4" *ngFor="let p of groupedProducts[selectedCategory]">
-      <div class="product-card shadow-sm p-3">
-        <h6 class="mb-1">{{ p.name }}</h6>
-        <div class="text-muted small mb-2">💰 {{ p.price | currency:'TRY ':'symbol':'1.2-2' }}</div>
-        <label class="mb-1">{{ p.description }}</label>
+          <td class="item-name">
+            {{ p.name }}
+            <div class="item-description">
+              {{ p.description }}
+            </div>
+          </td>
 
-        <div class="d-flex justify-content-end gap-2">
-          <button class="btn btn-outline-primary btn-sm"  (click)="onEdit(p.id)">Güncelle</button>
-          <button class="btn btn-outline-danger btn-sm"  (click)="onDelete(p.id)">Sil</button>
-       </div>
-      </div>
+          <td class="item-price">
+            {{ p.price | number:'1.0-0' }} ₺
+          </td>
+
+          <!-- ✅ ADMIN ACTIONS -->
+          <td class="item-actions">
+            <br>
+            <button class="btn-icon edit" (click)="onEdit(p.id)">✏️</button>
+            <button class="btn-icon delete" (click)="onDelete(p.id)">🗑️</button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="!groupedProducts[selectedCategory]?.length" class="no-items">
+      Bu kategoride ürün bulunmamaktadır.
     </div>
-  </div>
 
-  <div *ngIf="selectedCategory && (!groupedProducts[selectedCategory] || !groupedProducts[selectedCategory].length)"
-       class="text-muted text-center mt-5">
-    Bu kategoride ürün bulunamadı
   </div>
-
 </div>
