@@ -86,18 +86,18 @@ export class ProductCreateComponent implements OnInit{
     this.productService.create(this.form.value).subscribe({
       next: () => {
         this.submitting = false;
-        this.router.navigate(['/products']);
+        this.router.navigate(['admin-main-menu']);
       },
       error: err => {
         this.submitting = false;
         alert('Oluşturma hatası: ' + (err.message || err));
       }
     });
-
-    this.router.navigate(['admin-main-menu']);
   }
 
   cancel(): void {
-    this.router.navigate(['admin-main-menu']);
+    this.router.navigate(['admin-main-menu']).then(() => {
+        window.location.reload();
+      });
   }
 }

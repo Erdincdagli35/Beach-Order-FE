@@ -81,12 +81,17 @@ export class ProductListComponent implements OnInit {
   }
 
   onEdit(id?: number): void {
-    if (!id) return;
-    this.router.navigate(['/products/edit', id]);
+      console.log("go to update before : id : " + id);
+      this.router.navigate(['/products/edit', id]);
+      console.log("go to update after");
   }
 
+
+
   onCreate(): void {
-    this.router.navigate(['/products/create']);
+    this.router.navigate(['/products/create']).then(() => {
+        window.location.reload();
+      });
   }
 
   onAddToCart(product: Product) {
