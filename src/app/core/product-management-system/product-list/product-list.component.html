@@ -8,6 +8,7 @@
 
   <!-- CATEGORY -->
   <nav class="category-nav" *ngIf="categories?.length">
+  <div class="category-scroll">
     <button 
       *ngFor="let c of categories"
       (click)="selectedCategory = c"
@@ -15,15 +16,15 @@
     >
       {{ c }}
     </button>
-
-    <!-- ADMIN CREATE -->
-  <div class="action-cta">
-    <button class="btn-create" (click)="onCreate()">
-      {{ showCreateForm ? 'İptal' : 'Ürün Ekle' }}
-    </button>
   </div>
-  
-  </nav>
+</nav>
+
+<!-- CREATE BUTONUNU DIŞARI AL -->
+<div class="action-cta">
+  <button class="btn-create" (click)="onCreate()">
+    {{ showCreateForm ? 'İptal' : 'Ürün Ekle' }}
+  </button>
+</div>
 
   <!-- TABLE -->
   <div class="table-wrapper" *ngIf="selectedCategory">
