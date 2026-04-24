@@ -8,6 +8,8 @@
 
   <!-- CATEGORY -->
   <nav class="category-nav" *ngIf="categories?.length">
+
+  <div class="category-scroll">
     <button 
       *ngFor="let c of categories"
       (click)="selectedCategory = c"
@@ -15,7 +17,9 @@
     >
       {{ c }}
     </button>
-  </nav>
+  </div>
+
+</nav>
 
   <!-- TABLE -->
   <div class="table-wrapper" *ngIf="selectedCategory">

@@ -12,7 +12,8 @@
   font-family: 'Inter', sans-serif;
   color: #0f172a;
   box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
-  overflow: hidden;
+
+  overflow: visible; /* 🔥 FIX */
 }
 
 /* soft glow */
@@ -59,26 +60,46 @@
   font-size: 1.7rem;
   font-weight: 800;
   margin-bottom: 1.2rem;
-  color: #0f172a;
 }
 
 /* =========================
-   CATEGORY NAV (MODERN 2026)
+   CATEGORY NAV
    ========================= */
 
 .category-nav {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  width: 100%;
   margin-bottom: 1.4rem;
 }
 
-/* CATEGORY BUTTON */
-.category-nav button {
-  position: relative;
-  padding: 12px 14px;
-  border-radius: 14px;
+/* 🔥 SCROLL CONTAINER (ANA FIX) */
+.category-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
 
+  padding: 0 16px 8px 16px;
+  margin: 0 -16px;
+
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* scrollbar hide */
+.category-scroll::-webkit-scrollbar {
+  display: none;
+}
+.category-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* BUTTON */
+.category-scroll button {
+  flex: 0 0 auto;
+  min-width: 120px;
+  padding: 14px 16px;
+
+  border-radius: 14px;
   border: 1px solid rgba(148, 163, 184, 0.25);
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
@@ -91,10 +112,12 @@
   transition: all 0.3s ease;
 
   box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+
+  scroll-snap-align: start;
 }
 
 /* hover */
-.category-nav button:hover {
+.category-scroll button:hover {
   transform: translateY(-2px);
   border-color: rgba(59, 130, 246, 0.25);
   background: linear-gradient(135deg, #eff6ff, #ecfeff);
@@ -103,139 +126,26 @@
 }
 
 /* active */
-.category-nav button.active {
+.category-scroll button.active {
   background: linear-gradient(135deg, #60a5fa, #34d399);
-  color: #ffffff;
+  color: #fff;
   border: none;
 
   box-shadow:
     0 12px 28px rgba(52, 211, 153, 0.25),
     0 8px 20px rgba(59, 130, 246, 0.25);
-
-  transform: translateY(-1px);
-}
-
-/* shine */
-.category-nav button.active::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 14px;
-  background: linear-gradient(
-    120deg,
-    rgba(255,255,255,0.25),
-    transparent 40%,
-    rgba(255,255,255,0.1)
-  );
-  pointer-events: none;
 }
 
 /* =========================
-   ACTION BUTTON (ADD / CANCEL)
+   ACTION BUTTON
    ========================= */
 
 .action-buttons {
-  margin-top: 10px;
+  margin-top: 12px;
   display: flex;
   justify-content: center;
 }
 
-.create-cta {
-  display: flex;
-  justify-content: center;
-  margin-top: 14px;
-}
-
-/* COMPLETELY DIFFERENT DESIGN */
-.create-cta {
-  display: flex;
-  justify-content: center;
-  margin-top: 14px;
-}
-
-/* COMPLETELY DIFFERENT DESIGN */
-.btn-create {
-  position: relative;
-
-  padding: 12px 18px;
-  border-radius: 18px;
-
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px);
-
-  font-weight: 800;
-  font-size: 0.95rem;
-
-  color: #0f172a;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  transition: all 0.3s ease;
-
-  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
-}
-
-/* plus icon feel */
-.btn-create::before {
-  content: "+";
-  font-size: 1.2rem;
-  font-weight: 900;
-
-  background: linear-gradient(135deg, #38bdf8, #34d399);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* hover = floating glass lift */
-.btn-create:hover {
-  transform: translateY(-3px);
-
-  border-color: rgba(52, 211, 153, 0.35);
-
-  box-shadow:
-    0 18px 40px rgba(52, 211, 153, 0.18),
-    0 12px 30px rgba(56, 189, 248, 0.18);
-
-  background: rgba(255, 255, 255, 0.85);
-}
-
-/* click */
-.btn-create:active {
-  transform: scale(0.98);
-}
-
-/* plus icon feel */
-.btn-create::before {
-  content: "+";
-  font-size: 1.2rem;
-  font-weight: 900;
-
-  background: linear-gradient(135deg, #38bdf8, #34d399);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* hover = floating glass lift */
-.btn-create:hover {
-  transform: translateY(-3px);
-
-  border-color: rgba(52, 211, 153, 0.35);
-
-  box-shadow:
-    0 18px 40px rgba(52, 211, 153, 0.18),
-    0 12px 30px rgba(56, 189, 248, 0.18);
-
-  background: rgba(255, 255, 255, 0.85);
-}
-
-/* click */
-.btn-create:active {
-  transform: scale(0.98);
-}
 /* =========================
    TABLE
    ========================= */
@@ -279,10 +189,7 @@ tbody tr:hover {
   color: #1d4ed8;
 }
 
-/* =========================
-   ADMIN ACTIONS
-   ========================= */
-
+/* ACTIONS */
 .item-actions {
   width: 90px;
   text-align: right;
@@ -311,10 +218,7 @@ tbody tr:hover {
 .btn-icon.edit { color: #2563eb; }
 .btn-icon.delete { color: #dc2626; }
 
-/* =========================
-   EMPTY STATE
-   ========================= */
-
+/* EMPTY */
 .no-items {
   text-align: center;
   padding: 1rem;
@@ -342,14 +246,16 @@ tbody tr:hover {
   .item-price {
     font-size: 0.95rem;
   }
-
-  .category-nav {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
-@media (max-width: 420px) {
-  .category-nav {
-    grid-template-columns: 1fr;
+@media (max-width: 480px) {
+  .category-scroll {
+    padding: 0 12px 10px 12px;
+    margin: 0 -12px;
+  }
+
+  .category-scroll button {
+    min-width: 140px;
+    font-size: 0.9rem;
   }
 }
